@@ -1,2 +1,2 @@
-#!/bin/bash
+#!/bis/bash
 gcc -S $CFILE
