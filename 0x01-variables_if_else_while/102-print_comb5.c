@@ -10,14 +10,18 @@ int main(void)
 	int j;
 	int n;
 	int m;
+	m = 48;
+	n = 47;
 
 	for (i = 48; i <= 57; i++)
 	{
+		++n;
 		for (j = 48; j <= 57; j++)
 		{
-			for (n = 48; n <= 57; n++)
+			m++;
+			for (; n <= 57; n++)
 			{
-				for (m = 49; m <= 57; m++)
+				for (; m <= 57; m++)
 				{
 					putchar(i);
 					if (j != 57)
