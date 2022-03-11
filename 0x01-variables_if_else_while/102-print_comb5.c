@@ -15,13 +15,13 @@ int main(void)
 
 	for (i = 48; i <= 57; i++)
 	{
-		m = 48;
+		m++;
 		for (j = 48; j <= 57; j++)
 		{
-			n = 48;
-			for (n = 48; n <= 57; n++)
+			n++;
+			for (; n <= 57; n++)
 			{
-				for (m = 48; m <= 57; m++)
+				for (; m <= 57; m++)
 				{
 					putchar(i);
 					if (j != 57)
