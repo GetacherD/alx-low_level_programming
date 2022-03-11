@@ -27,10 +27,6 @@ int main(void)
 					{
 						continue;
 					}
-					if (m == 57)
-					{
-						j = 48;
-					}
 					putchar(i);
 					if (j != 57)
 					{
