@@ -10,10 +10,6 @@ int main(void)
 	int j;
 	int n;
 	int m;
-	m = 48;
-	n = 48;
-	i = 48;
-	j = 48;
 
 	for (i = 48; i <= 57; i++)
 	{
