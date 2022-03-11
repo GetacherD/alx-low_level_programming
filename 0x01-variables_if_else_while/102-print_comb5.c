@@ -25,7 +25,7 @@ int main(void)
 				{
 					if (m == 57)
 					{
-						j = 48;
+						j++;
 					}
 					putchar(i);
 					if (j != 57)
