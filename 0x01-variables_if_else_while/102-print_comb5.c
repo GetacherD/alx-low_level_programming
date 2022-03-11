@@ -23,6 +23,10 @@ int main(void)
 			{
 				for (m =48; m <= 57; m++)
 				{
+					if ((n ==48) && (m == 48))
+					{
+						continue;
+					}
 					if (m == 57)
 					{
 						j = 48;
