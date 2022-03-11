@@ -19,17 +19,23 @@ int main(void)
 			{
 				for (m = j; m <= 57; m++)
 				{
-					putchar(i);
-					putchar(j);
-					putchar(' ');
-					putchar(n);
-					putchar(m);
-					if ((i == 57) && (j == 56) && (n == 57) && (m == 57))
+					if ((i == n) && (j == m))
 					{}
 					else
 					{
-						putchar(',');
+
+						putchar(i);
+						putchar(j);
 						putchar(' ');
+						putchar(n);
+						putchar(m);
+						if ((i == 57) && (j == 56) && (n == 57) && (m == 57))
+						{}
+						else
+						{
+							putchar(',');
+							putchar(' ');
+						}
 					}
 				}
 			}
