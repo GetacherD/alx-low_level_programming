@@ -17,13 +17,13 @@ int main(void)
 		{
 			for (n = i; n <= 57; n++)
 			{
-				for (m = j+1; m <= 57; m++)
+				for (m = j + 1; m <= 57; m++)
 				{
 					putchar(i);
 					putchar(j);
 					putchar(' ');
 					putchar(n);
-					putchar(m);	
+					putchar(m);
 					if ((i == 57) && (j == 56) && (n == 57) && (m == 57))
 					{}
 					else
