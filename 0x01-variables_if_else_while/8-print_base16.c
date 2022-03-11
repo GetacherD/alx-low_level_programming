@@ -9,16 +9,16 @@ int main(void)
 {
 	int lower;
 
-	for (lower = 48; lower <= 70; lower++)
+	for (lower = 48; lower <= 102; lower++)
 	{
-		if ((lower < 58) || (lower >= 65))
+		if ((lower < 58) || (lower >= 97))
 		{
 
 			putchar(lower);
-			putchar('\n');
 		}
 
 	}
+	putchar('\n');
 
 	return (0);
 }
