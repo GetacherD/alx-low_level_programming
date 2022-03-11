@@ -27,14 +27,14 @@ int main(void)
 						putchar(j);
 						putchar(' ');
 						putchar(n);
-						putchar(m);
-					}
-					if ((i == 57) && (j == 56) && (n == 57) && (m == 57))
-					{}
-					else
-					{
-						putchar(',');
-						putchar(' ');
+						putchar(m);	
+						if ((i == 57) && (j == 56) && (n == 57) && (m == 57))
+						{}
+						else
+						{
+							putchar(',');
+							putchar(' ');
+						}
 					}
 				}
 			}
