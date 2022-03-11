@@ -23,7 +23,7 @@ int main(void)
 			{
 				for (m =49; m <= 57; m++)
 				{
-					if (m == 49)
+					if (m == 57)
 					{
 						j = 48;
 					}
