@@ -15,27 +15,26 @@ int main(void)
 	{
 		for (j = 48; j <= 57; j++)
 		{
+			putchar(i);
+			if (j != 57)
+			{
+				putchar(j);
+			}
 			for (n = 48; n <= 57; n++)
 			{
 				for (m = 48; m <= 57; m++)
 				{
-					if ((i == 57) && (j == 57) && (m == 57) && (n == 57))
-					{}
-					else
+					if ((i < n) && (j < m))
 					{
 						putchar(n);
 						putchar(m);
-						putchar(' ');
-						putchar(i);
-						putchar(j);
-						if ((n == 57) && (m == 56) && (i == 57) && (j == 57))
+						if ((i == 57) && (j == 56) && (n == 57) && (m == 57))
 						{}
 						else
 						{
 							putchar(',');
 							putchar(' ');
 						}
-					}
 				}
 			}
 		}
