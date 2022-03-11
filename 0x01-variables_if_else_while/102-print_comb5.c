@@ -11,13 +11,13 @@ int main(void)
 	int n;
 	int m;
 	m = 48;
-	n = 47;
+	n = 48;
 
 	for (i = 48; i <= 57; i++)
 	{
 		for (j = 48; j <= 57; j++)
 		{
-			n++;
+			m++;
 			for (; n <= 57; n++)
 			{
 				for (; m <= 57; m++)
