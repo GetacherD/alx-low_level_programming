@@ -15,22 +15,20 @@ int main(void)
 	{
 		for (j = 48; j <= 57; j++)
 		{
-			for (n = 48; n <= 57; n++)
+			for (n = i; n <= 57; n++)
 			{
-				for (m = 48; m <= 57; m++)
+				for (m = j; m <= 57; m++)
 				{
-					if ((i == 57) && (j == 57) && (m == 57) && (n == 57))
+					if (((i == 48) && (j == 48) && (n == 48) && (m == 48)) || ((i == n) && (j == m)))
 					{}
 					else
 					{
-						putchar(n);
-						putchar(m);
-						putchar(' ');
 						putchar(i);
 						putchar(j);
-						if ((n == 57) && (m == 56) && (i == 57) && (j == 57))
-						{}
-						else
+						putchar(' ');
+						putchar(n);
+						putchar(m);
+						if (!((n == 57) && (m == 57) && (i == 57) && (j == 56)))
 						{
 							putchar(',');
 							putchar(' ');
