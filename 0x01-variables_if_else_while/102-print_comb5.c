@@ -19,18 +19,23 @@ int main(void)
 			{
 				for (m = j; m <= 57; m++)
 				{
-					if (!(((i == 48) && (j == 48) && (n == 48) && (m == 48)) || ((i == n) && (j == m))))
+					if (((i == 48) && (j == 48) && (n == 48)
+						&& (m == 48)) || ((i == n) && (j == m)))
+					{}
+					else
 					{
 						putchar(i);
 						putchar(j);
 						putchar(' ');
 						putchar(n);
 						putchar(m);
-						if (!((n == 57) && (m == 57) && (i == 57) && (j == 56)))
-						{
-							putchar(',');
-							putchar(' ');
-						}
+					}
+					if ((n == 57) && (m == 57) && (i == 57) && (j == 56))
+					{}
+					else
+					{
+						putchar(',');
+						putchar(' ');
 					}
 				}
 			}
