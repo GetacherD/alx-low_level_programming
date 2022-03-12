@@ -19,7 +19,7 @@ int main(void)
 			{
 				for (m = 48; m <= 57; m++)
 				{
-					if ((m > j) || (n > i))
+					if ((m > j) || (n >= i))
 					{
 						putchar(i);
 						putchar(j);
@@ -27,7 +27,7 @@ int main(void)
 						putchar(n);
 						putchar(m);
 					}
-					if (((m > j) || (n > i)) &&
+					if (((m > j) || (n >= i)) &&
 						!((i == 57) && (j == 56) && (n == 57) && (m == 57)))
 					{
 						putchar(',');
