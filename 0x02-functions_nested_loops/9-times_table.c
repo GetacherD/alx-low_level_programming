@@ -50,17 +50,24 @@ void times_table(void)
 			{
 				_putchar(gc(k / 10));
 				_putchar(gc(k % 10));
-				_putchar(' ');
 			}
 			else
 			{
 				_putchar(gc(k));
+			}
+			if ((j != 9) && (k < 10))
+			{
+				_putchar(',');
 				_putchar(' ');
 				_putchar(' ');
 			}
-			if (j != 9)
+			else if ((j != 9) && (k >=10))
 			{
 				_putchar(',');
+				_putchar(' ');
+			}
+			else
+			{
 			}
 		}
 		_putchar('\n');
