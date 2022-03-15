@@ -7,19 +7,18 @@
  */
 int main(void)
 {
-	int i;
-	int j;
 	int k;
 	int sum;
+	int prev;
 
-	i = 1;
-	j = 2;
-	k = 0;
+	sum = 2;
+	prev = 1;
+	printf("%d, ", prev);
+	printf("%d, ", sum);
 	while (k < 50)
 	{
-		sum = i + j;
-		i++;
-		j++;
+		sum = sum + prev;
+		prev = sum;
 		printf("%d, ", sum);
 		k++;
 	}
