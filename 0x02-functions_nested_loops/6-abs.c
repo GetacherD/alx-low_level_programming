@@ -10,7 +10,7 @@
  */
 int int_abs(int x)
 {
-	return fabs(x);
+	return fabs((double)x);
 }
 
 
