@@ -1,7 +1,7 @@
 #include "main.h"
 #include <stdlib.h>
 /**
- * int_abs - give abs value
+ * _abs - give abs value
  * @: any int input
  *
  * Description: print abs value
@@ -10,7 +10,7 @@
  */
 int _abs(int x)
 {
-	return abs(x);
+	return (abs(x));
 }
 
 
