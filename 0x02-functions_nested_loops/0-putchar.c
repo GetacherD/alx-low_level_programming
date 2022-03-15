@@ -1,18 +1,4 @@
-#include<stdio.h>
-/**
- * _putchar -print string to screen
- * Description: print string to scren
- */
-void _putchar(char str[])
-{
-	int i;
-	
-	for (i = 0; i < (int)sizeof(str)/(int)sizeof(str[0]);i++)
-	{
-		putchar(str[i]);
-	}
-	putchar('\n');
-}
+#include "main.h"
 /**
  * main -entry point
  * Description: print string
@@ -21,7 +7,14 @@ void _putchar(char str[])
  */
 int main(void)
 {
-	_putchar("_putchar");
+	char *s = "_putchar";
+
+	while (*s != '\0')
+	{
+		_putchar(*s);
+		s++;
+	}
+	_putchar('\n');
 
 	return (0);
 }
