@@ -13,4 +13,5 @@ void times_table(void);
 int gc(int);
 int add(int, int);
 void print_to_98(int);
+void print_times_table(int);
 #endif
