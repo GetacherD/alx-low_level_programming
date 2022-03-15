@@ -14,12 +14,14 @@ int main(void)
 
 	i = 1;
 	j = 2;
-	for (k = 0; k < 50; k++)
+	k = 0;
+	while (k < 50)
 	{
 		sum = i + j;
 		i++;
 		j++;
 		printf("%d, ", sum);
+		k++;
 	}
 	printf("\n");
 
