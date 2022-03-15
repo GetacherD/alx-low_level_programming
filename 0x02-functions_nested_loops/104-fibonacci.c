@@ -8,9 +8,9 @@
 int main(void)
 {
 	int k;
-	unsigned long int  sum;
-	unsigned long int  prev;
-	unsigned long int  temp;
+	long sum;
+	long prev;
+	long temp;
 
 	k = 0;
 	sum = 2;
