@@ -1,6 +1,7 @@
 #include "main.h"
 /**
  * _islower -check foe case
+ * @c: input letter
  * Description: check  case of letter
  *
  * Return: 1 if lower else 0
