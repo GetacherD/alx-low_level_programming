@@ -3,8 +3,10 @@
 /**
  * main -entry point
  * Description: dummy
+ *
+ * Return: 0 always
  */
-void main(void)
+int main(void)
 {
 	int i;
 	int sum;
@@ -18,4 +20,6 @@ void main(void)
 		}
 	}
 	printf("%d\n", sum);
+
+	return (0);
 }
