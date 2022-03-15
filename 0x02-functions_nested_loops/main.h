@@ -14,4 +14,5 @@ int gc(int);
 int add(int, int);
 void print_to_98(int);
 void print_times_table(int);
+void multiple_35(void);
 #endif
