@@ -62,7 +62,7 @@ void print_ijk(int i, int j, int k)
 	else if ((j != 0) && (k >= 100))
 	{
 		_putchar(',');
-		putchar(' ');
+		_putchar(' ');
 		_putchar(gc(k / 100));
 		_putchar(gc((k % 100) / 10));
 		_putchar(gc(k % 10));
