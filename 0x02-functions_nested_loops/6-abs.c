@@ -1,5 +1,5 @@
 #include "main.h"
-#include <math.h>
+#include <stdlib.h>
 /**
  * int_abs - give abs value
  * @: any int input
@@ -10,7 +10,7 @@
  */
 int int_abs(int x)
 {
-	return fabs((double)x);
+	return abs(x);
 }
 
 
