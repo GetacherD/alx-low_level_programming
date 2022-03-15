@@ -1,13 +1,11 @@
 #include "main.h"
-/**
- * main -entry point
- * Description: print alpahabet lower case
- *
- * Return: 0 always
- */
-int main(void)
-{
-	print_alphabet();
 
-	return (0);
+void print_alphabet(void)
+{
+	int i;
+	for (i = 97;i <= 122;i++)
+	{
+		_putchar(i);
+	}
+	_putchar('\n');
 }
