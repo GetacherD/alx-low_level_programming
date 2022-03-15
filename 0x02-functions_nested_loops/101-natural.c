@@ -1,10 +1,10 @@
 #include "main.h"
 #include <stdio.h>
 /**
- * multiple_35 -multiple of 35
+ * main -entry point
  * Description: dummy
  */
-void multiple_35(void)
+void main(void)
 {
 	int i;
 	int sum;
