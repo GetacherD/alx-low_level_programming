@@ -35,13 +35,12 @@ int gc(int c)
 }
 /**
  * print_ijk -print e num
- * @i: first
  * @j: second
  * @k: third
  *
  * Description: dumy
  */
-void print_ijk(int i, int j, int k)
+void print_ijk(int j, int k)
 {
 	if ((j != 0) && (k < 10))
 	{
@@ -95,7 +94,7 @@ void print_times_table(int n)
 			for (j = 0; j <= n; j++)
 			{
 				k = i * j;
-				print_ijk(i, j, k);
+				print_ijk(j, k);
 			}
 			_putchar('\n');
 		}
