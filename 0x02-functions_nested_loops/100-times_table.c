@@ -34,6 +34,50 @@ int gc(int c)
 	}
 }
 /**
+ * print_ijk -print e num
+ * @i: first
+ * @j: second
+ * @k: third
+ *
+ * Description: dumy
+ */
+void print_ijk(int i, int j, int k)
+{
+	if ((j != 0) && (k < 10))
+	{
+		_putchar(',');
+		_putchar(' ');
+		_putchar(' ');
+		_putchar(' ');
+		_putchar(gc(k));
+	}
+	else if ((j != 0) && (k < 100))
+	{
+		_putchar(',');
+		_putchar(' ');
+		_putchar(' ');
+		_putchar(gc(k / 10));
+		_putchar(gc(k % 10));
+	}
+	else if ((j != 0) && (k >= 100))
+	{
+		_putchar(',');
+		putchar(' ');
+		_putchar(gc(k / 100));
+		_putchar(gc((k % 100) / 10));
+		_putchar(gc(k % 10));
+	}
+	else if (j == 0)
+	{
+		putchar(gc(k));
+	}
+	else
+	{
+	}
+}
+
+
+/**
  * print_times_table -print times table
  * @n: range
  * Description: print times table
@@ -51,30 +95,7 @@ void print_times_table(int n)
 			for (j = 0; j <= n; j++)
 			{
 				k = i * j;
-				if ((j != 0) && (k < 10))
-				{
-					_putchar(',');
-					_putchar(' ');
-					_putchar(' ');
-					_putchar(' ');
-					_putchar(gc(k));
-				}
-				else if ((j != 0) && (k < 100))
-				{
-					_putchar(',');
-					_putchar(' ');
-					_putchar(' ');
-					_putchar(gc(k / 10));
-					_putchar(gc(k % 10));
-				}
-				else if ((j != 0) && (k >= 100))
-				{
-					_putchar(',');
-					_putchar(' ');
-					_putchar(gc(k / 100));
-					_putchar(gc((k % 100) / 10));
-					_putchar(gc(k % 10));
-				}
+				print_ijk(i, j, k);
 			}
 			_putchar('\n');
 		}
