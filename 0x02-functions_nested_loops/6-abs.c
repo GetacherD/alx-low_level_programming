@@ -8,7 +8,7 @@
  *
  * Return: 0 always
  */
-int_abs(int x)
+int int_abs(int x)
 {
 	return abs(x);
 }
