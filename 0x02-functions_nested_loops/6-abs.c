@@ -2,7 +2,7 @@
 #include <stdlib.h>
 /**
  * _abs - give abs value
- * @: any int input
+ * @x: any int input
  *
  * Description: print abs value
  *
