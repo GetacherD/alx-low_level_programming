@@ -8,25 +8,25 @@
 int main(void)
 {
 	int k;
-	unsigned long long sum;
-	unsigned long long prev;
-	unsigned long long temp;
+	unsigned long sum;
+	unsigned long prev;
+	unsigned long temp;
 
 	k = 0;
 	sum = 2;
 	temp = 1;
 	prev = 1;
-	printf("%llu, ", prev);
-	printf("%llu, ", sum);
+	printf("%lu, ", prev);
+	printf("%lu, ", sum);
 	while (k < 98)
 	{
 		temp = sum;
 		sum = sum + prev;
 		prev = temp;
 		if (k != 97)
-			printf("%llu, ", sum);
+			printf("%lu, ", sum);
 		else
-			printf("%llu\n", sum);
+			printf("%lu\n", sum);
 		k++;
 	}
 
