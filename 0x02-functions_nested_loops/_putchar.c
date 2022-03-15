@@ -3,8 +3,13 @@
  * _putchar -print string
  * Description: print string
  */
-void _putchar(char s)
+void print_alphabet(void)
 {
-	putchar(s);
+	int i;
+	for (i = 97;i <= 122; i++)
+	{
+		putchar(i);
+	}
+	putchar('\n');
 }
 
