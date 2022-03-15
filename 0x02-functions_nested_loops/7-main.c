@@ -9,6 +9,7 @@ int main(void)
 	j = print_last_digit(0);
 	printf("%d\n", i);
 	printf("%d\n",j);
+	printf("%d\n",print_last_digit(-566594));
 
 	return 0;
 }
