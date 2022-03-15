@@ -76,7 +76,7 @@ void print_times_table(int n)
 					_putchar(gc(k % 10));
 				}
 			}
+			_putchar('\n');
 		}
-		_putchar('\n');
 	}
 }
