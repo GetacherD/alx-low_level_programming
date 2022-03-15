@@ -46,6 +46,20 @@ void times_table(void)
 		for (j = 0; j <= 9; j++)
 		{
 			k=i*j;
+			if ((j != 0) && (k < 10))
+			{
+				_putchar(',');
+				_putchar(' ');
+				_putchar(' ');
+			}
+			else if ((j != 0) && (k >=10))
+			{
+				_putchar(',');
+				_putchar(' ');
+			}
+			else
+			{
+			}
 			if (k >= 10)
 			{
 				_putchar(gc(k / 10));
@@ -54,20 +68,6 @@ void times_table(void)
 			else
 			{
 				_putchar(gc(k));
-			}
-			if ((j != 9) && (k < 10))
-			{
-				_putchar(',');
-				_putchar(' ');
-				_putchar(' ');
-			}
-			else if ((j != 9) && (k >=10))
-			{
-				_putchar(',');
-				_putchar(' ');
-			}
-			else
-			{
 			}
 		}
 		_putchar('\n');
