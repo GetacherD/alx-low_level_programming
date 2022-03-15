@@ -1,18 +1,17 @@
 #include "main.h"
 /**
- * print_sign - print sign of number
- * @n: number to be checked
+ **print_sign - print sign of number
+ *@n: number to be checked
  *
- * Description : check sign 
- *
- * Return: 1 if gt 0 , 0 if 0 and  -1 id 
+ **Description : check sig
+ *Return: 1 if gt 0 , 0 if 0 and  -1 id
  */
 int print_sign(int n)
 {
 	if (n > 0)
 	{
 		_putchar('+');
-		
+
 		return (1);
 	}
 	else if (n == 0)
