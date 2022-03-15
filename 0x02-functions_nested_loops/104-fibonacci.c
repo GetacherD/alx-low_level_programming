@@ -16,17 +16,17 @@ int main(void)
 	sum = 2;
 	temp = 1;
 	prev = 1;
-	printf("%.0LF, ", prev);
-	printf("%.0LF, ", sum);
+	printf("%.0Lf, ", prev);
+	printf("%.0Lf, ", sum);
 	while (k < 96)
 	{
 		temp = sum;
 		sum = sum + prev;
 		prev = temp;
 		if (k != 95)
-			printf("%.0LF, ", sum);
+			printf("%.0Lf, ", sum);
 		else
-			printf("%.0LF\n", sum);
+			printf("%.0Lf\n", sum);
 		k++;
 	}
 
