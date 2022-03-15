@@ -69,7 +69,7 @@ void print_ijk(int i, int j, int k)
 	}
 	else if (j == 0)
 	{
-		putchar(gc(k));
+		_putchar(gc(k));
 	}
 	else
 	{
