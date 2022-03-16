@@ -12,6 +12,7 @@ int main(void)
 	long double prev;
 	long double temp;
 
+
 	k = 0;
 	sum = 2;
 	temp = 1;
