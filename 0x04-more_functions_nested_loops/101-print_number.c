@@ -1,4 +1,5 @@
 #include "main.h"
+
 /**
  * ascii -convert to asci number
  * @n: input digit
@@ -7,6 +8,7 @@
  *
  * Return: the digits asci code
  */
+
 int ascii(int n)
 {
 	switch (n)
@@ -35,6 +37,7 @@ int ascii(int n)
 		return (0);
 	}
 }
+
 /**
  * power - gives power of x  to y
  * @x: base
@@ -44,6 +47,7 @@ int ascii(int n)
  *
  * Return: x ^ y
  */
+
 int power(int x, int y)
 {
 	int i;
@@ -57,12 +61,14 @@ int power(int x, int y)
 
 	return (x);
 }
+
 /**
  * print_number -print any number
  * @n: the number to be printed
  *
  * Description: this function prints any number
  */
+
 void print_number(int n)
 {
 	int m;
