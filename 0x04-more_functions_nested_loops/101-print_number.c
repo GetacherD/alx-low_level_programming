@@ -7,7 +7,7 @@
  *
  * Return: the digits asci code
  */
-int asci(int n)
+int ascii(int n)
 {
 	switch (n)
 	{
@@ -83,8 +83,8 @@ void print_number(int n)
 	}
 	for (i = digits - 1; i > 0; i--)
 	{
-		_putchar(asci(m / power(10, i)));
+		_putchar(ascii(m / power(10, i)));
 		m %= power(10, i);
 	}
-	_putchar(asci(m));
+	_putchar(ascii(m));
 }
