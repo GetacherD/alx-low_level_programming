@@ -46,6 +46,4 @@ void print_number(int n)
 		m %= power(10, i);
 	}
 	_putchar(asci(m));
-
-	return (0);
 }
