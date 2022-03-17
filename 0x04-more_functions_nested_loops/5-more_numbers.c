@@ -44,16 +44,18 @@ void more_numbers(void)
 	int i;
 	int k;
 
-	for (i = 0; i <= 14; i++)
+	for (k = 0; k <= 9; k++)
 	{
-		k = 10 * i;
-		if (k >= 10)
+		for (i = 0; i <= 14; i++)
 		{
-			_putchar(asci(k / 10));
+			if (i >= 10)
+			{
+				_putchar(asci(i / 10));
+			}
+			_putchar(asci(i % 10));
 		}
-		_putchar(asci(k % 10));
+		_putchar('\n');
 	}
-	_putchar('\n');
 }
 
 
