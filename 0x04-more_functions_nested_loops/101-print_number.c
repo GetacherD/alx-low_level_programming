@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdio.h>
 /**
  * asci -convert to asci number
  * @n: input digit
@@ -71,6 +70,12 @@ void print_number(int n)
 
 	digits = 1;
 	m = n;
+	if (n < 0)
+	{
+		n = (-1) * n;
+		m = (-1) * m;
+		_putchar('-');
+	}
 	while ((n / 10) != 0)
 	{
 		digits++;
