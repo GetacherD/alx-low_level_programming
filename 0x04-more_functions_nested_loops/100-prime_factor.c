@@ -8,11 +8,11 @@
  *
  * Return: 1 if prime else 0
  */
-int isprime(int n)
+int isprime(long n)
 {
-	int i;
-	int count;
-	
+	long i;
+	long count;
+
 	count = 0;
 	for (i = 1; i <= n; i++)
 	{
@@ -26,7 +26,37 @@ int isprime(int n)
 	else
 		return (1);
 }
+/**
+ * max_prime_factor -gives maximum prime factor of a number
+ * @n: maximum prima factor
+ *
+ * Description: the maximum prime factor of a given number
+ *
+ * Return: maximum prime factor
+ */
+long max_prime_factor(long n)
+{
+	long i;
+	long max;
 
+	max = 1;
+	for (i = 1; i <= n; i++)
+	{
+		if (n % i == 0)
+		{
+			/*printf("%lu\n", i);*/
+			if (isprime(i) == 1)
+			{
+				if (max < i)
+				{
+					max = i;
+				}
+			}
+		}	
+	}
+
+	return (max);
+}
 /**
  * main -entry point
  * Description: program that prints largest prime factor of a number
@@ -35,8 +65,8 @@ int isprime(int n)
  */
 int main(void)
 {
-	int i;
-	
-	for (i = 1; i <= 612852475143; i++)
-	{
+	printf("%lu\n", max_prime_factor(612852475143));
+
+	return (0);
+}
 
