@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * asci -convert to asci number
+ * ascii -convert to asci number
  * @n: input digit
  *
  * Description: convert the digit to its asci code
