@@ -60,6 +60,7 @@ int power(int x, int y)
 /**
  * print_number -print any number
  * @n: the number to be printed
+ *
  * Description: this function prints any number
  */
 void print_number(int n)
