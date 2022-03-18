@@ -1,5 +1,5 @@
 #include "main.h"
-
+#include <stdio.h>
 /**
  * ascii -convert to asci number
  * @n: input digit
@@ -81,8 +81,6 @@ void print_number(int n)
 	m = n;
 	if (n < 0)
 	{
-		n = (-1) * n;
-		m = (-1) * m;
 		_putchar('-');
 	}
 	while ((n / b) != 0)
@@ -92,8 +90,22 @@ void print_number(int n)
 	}
 	for (i = digits - 1; i > 0; i--)
 	{
-		_putchar(ascii(m / power(b, i)));
+		if (m < 0)
+		{
+			_putchar(ascii((-1) * (m / power(b, i))));
+		}
+		else
+		{
+			_putchar(ascii(m / power(b, i)));
+		}
 		m %= power(b, i);
 	}
-	_putchar(ascii(m));
+	if (m < 0)
+	{
+		_putchar(ascii((-1) * m));
+	}
+	else
+	{
+		_putchar(ascii(m));
+	}
 }
