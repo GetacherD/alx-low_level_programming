@@ -41,7 +41,7 @@ unsigned long int  max_prime_factor(unsigned long int n)
 	unsigned long int max;
 
 	max = 1;
-	for (i = 1; i <= n / 2; i++)
+	for (i = 1; i <= n / 12000; i++)
 	{
 		if (n % i == 0)
 		{
