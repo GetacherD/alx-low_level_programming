@@ -74,7 +74,8 @@ void print_number(int n)
 	int m;
 	int i;
 	int digits;
-
+	int b;
+	b = 10;
 	digits = 1;
 	m = n;
 	if (n < 0)
@@ -83,15 +84,15 @@ void print_number(int n)
 		m = (-1) * m;
 		_putchar('-');
 	}
-	while ((n / 10) != 0)
+	while ((n / b) != 0)
 	{
 		digits++;
-		n = n / 10;
+		n = n / b;
 	}
 	for (i = digits - 1; i > 0; i--)
 	{
-		_putchar(ascii(m / power(10, i)));
-		m %= power(10, i);
+		_putchar(ascii(m / power(b, i)));
+		m %= power(b, i);
 	}
 	_putchar(ascii(m));
 }
