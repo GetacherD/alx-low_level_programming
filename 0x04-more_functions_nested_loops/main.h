@@ -16,5 +16,5 @@ void print_most_numbers(void);
 void print_number(int n);
 int power(int x, int y);
 long max_prime_factor(long n);
-int isprime(int n);
+int isprime(long n);
 #endif
