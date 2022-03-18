@@ -8,10 +8,10 @@
  *
  * Return: 1
  */
-int isprime(long n)
+int isprime(unsigned long int n)
 {
-	long i;
-	long count;
+	unsigned long  int i;
+	unsigned long int count;
 
 	count = 0;
 	for (i = 1; i <= n; i++)
@@ -35,10 +35,10 @@ int isprime(long n)
  *
  * Return: 1
  */
-long max_prime_factor(long n)
+unsigned long int  max_prime_factor(unsigned long int n)
 {
-	long i;
-	long max;
+	unsigned long int i;
+	unsigned long int max;
 
 	max = 1;
 	for (i = 1; i <= n / 2; i++)
@@ -66,7 +66,6 @@ long max_prime_factor(long n)
 int main(void)
 {
 	printf("%lu\n", max_prime_factor(612852475143));
-
 	return (0);
 }
 
