@@ -40,15 +40,10 @@ long max_prime_factor(long n)
 	long max;
 
 	max = 1;
-	for (i = 1; i <= n; i++)
+	for (i = 1; i <= n / 2; i++)
 	{
-		if (i > n / 2)
-		{
-			break;
-		}
 		if (n % i == 0)
 		{
-			/*printf("%lu\n", i);*/
 			if (isprime(i) == 1)
 			{
 				if (max < i)
