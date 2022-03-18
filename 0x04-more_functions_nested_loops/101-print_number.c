@@ -75,6 +75,7 @@ void print_number(int n)
 	int i;
 	int digits;
 	int b;
+
 	b = 10;
 	digits = 1;
 	m = n;
