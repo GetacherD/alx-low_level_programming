@@ -15,6 +15,5 @@ void print_triangle(int size);
 void print_most_numbers(void);
 void print_number(int n);
 int power(int x, int y);
-unsigned long int  max_prime_factor(unsigned long int n);
-int isprime(unsigned long int n);
+long max_prime_factor(long n);
 #endif
