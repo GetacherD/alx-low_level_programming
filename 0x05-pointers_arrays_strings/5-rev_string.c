@@ -12,7 +12,7 @@ int len(char *s)
 	int le;
 
 	le = 0;
-	while(*s != '\0')
+	while (*s != '\0')
 	{
 		le++;
 		s++;
@@ -29,17 +29,20 @@ int len(char *s)
 void rev_string(char *s)
 {
 	int length;
-	char *cp = s;
-	int i,j;
-	char tmp;
+	int i, j;
 
-        length =len(s);
-	j = length -1;
-	for(i = 0 ; i < length; i++)
+	length = len(s);
+	char cp[length];
+
+	j = length - 1;
+	for (i = 0 ; i < length; i++)
 	{
-		tmp=s[i];
-		s[i]=cp[j];
-		cp[j]=tmp;
+		cp[i] = s[i];
+
+	}
+	for (i = 0; i < length; i++)
+	{
+		s[i] = cp[j];
 		j--;
 	}
 
