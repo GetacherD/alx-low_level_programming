@@ -123,7 +123,6 @@ int L(char *s)
 int _atoi(char *s)
 {
 	int fs, ls;
-	char prev;
 	char *cp = s;
 	int num;
 	int k, i;
