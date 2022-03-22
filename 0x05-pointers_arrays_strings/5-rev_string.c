@@ -30,9 +30,9 @@ void rev_string(char *s)
 {
 	int length;
 	int i, j;
+	char cp[100];
 
 	length = len(s);
-	char cp[length];
 
 	j = length - 1;
 	for (i = 0 ; i < length; i++)
