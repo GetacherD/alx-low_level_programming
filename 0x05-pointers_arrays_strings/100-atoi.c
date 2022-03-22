@@ -1,35 +1,149 @@
-#include "main.h"
+#include <stdio.h>
 
 /**
- * _atoi - Convert a string to integer.
- * @s: char array string
- * Return: first integer found in string
+ * asci - Convert asci number to digits.
+ * @n: input asci code
+ * Return: digits
+ */
+int asci(int n)
+{
+	switch (n)
+	{
+	case 48:
+		return (0);
+	case 49:
+		return (1);
+	case 50:
+		return (2);
+	case 51:
+		return (3);
+	case 52:
+		return (4);
+	case 53:
+		return (5);
+	case 54:
+		return (6);
+	case 55:
+		return (7);
+	case 56:
+		return (8);
+	case 57:
+		return (9);
+	default:
+		return (0);
+	}
+}
+/**
+ * power -return x to power of y
+ * @x: base
+ * @y: exponent
+ *
+ * Description: raise x to power of y
+ *
+ * Return: powered num
+ */
+int power(int x, int y)
+{
+	int cp, i;
+
+	cp = x;
+	if (y == 0)
+	{
+		return (1);
+	}
+	else
+	{
+		for (i = 1; i < y ; i++)
+		{
+			x = x * cp;
+		}
+		return (x);
+	}
+}
+/**
+ * F -get index of firstoccurance of s
+ * @s: string pointer
+ *
+ * Description: get first num
+ *
+ * Return: start
+ */
+int F(char *s)
+{
+	int i;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		if ((s[i] >= '0') && (s[i] <= '9'))
+		{
+			break;
+		}
+		i++;
+	}
+
+	return (i);
+}
+
+/**
+ * L -extract last occurance of num in string
+ * @s: string input
+ *
+ * Description: extract first num from string
+ *
+ * Return: end
+ */
+int L(char *s)
+{
+	int i;
+	int first;
+	int last;
+
+	first = F(s);
+	last = first;
+	i = 0;
+	while (s[first + i] != '\0')
+	{
+		if ((s[first + i] < '0') || (s[first + i] > '9'))
+		{
+			last = first + i;
+			break;
+		}
+		i++;
+	}
+	return (last);
+}
+
+
+/**
+ * _atoi -extract first occurance of num in string
+ * @s: string input
+ *
+ * Description: extract first num from string
+ *
+ * Return: int number
  */
 int _atoi(char *s)
 {
-	int i;
-	int h, p;
+	int fs, ls;
+	char prev;
+	char *cp = s;
+	int num;
+	int k, i;
 
-	h = 0;
-	p = -1;
-	for (i = 0; s[i] != '\0'; i++)
+	num = 0;
+	i = 0;
+	fs = F(s);
+	ls = L(s);
+	k = ls - fs - 1;
+	for (i = fs; i < ls; i++)
 	{
-		if (s[i] == '-')
-			p *= -1;
-
-		if (s[i] > 47 && s[i] < 58)
-		{
-			if (h < 0)
-				h = (h * 10) - (s[i] - '0');
-			else
-				h = (s[i] - '0') * -1;
-
-			if (s[i + 1] < 48 || s[i + 1] > 57)
-				break;
-		}
+		num = num + asci(cp[i]) * power(10, k);
+		k--;
 	}
-	if (p < 0)
-		h *= -1;
+	prev = cp[fs - 1];
+	if (prev == '-')
+		num = num * -1;
 
-	return (h);
+	return (num);
 }
