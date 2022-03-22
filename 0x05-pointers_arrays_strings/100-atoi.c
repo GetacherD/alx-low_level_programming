@@ -102,9 +102,10 @@ int L(char *s)
 	first = F(s);
 	last = first;
 	i = 0;
-	while (s[first + i] < '0' || s[first + i] > '9')
+	while (s[last] >= '0' &&  s[last] <= '9')
 	{
 		last++;
+		i++;
 	}
 	return (last);
 }
