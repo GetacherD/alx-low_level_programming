@@ -1,5 +1,26 @@
 #include "main.h"
 /**
+ * len -reurn len
+ * @s: str input
+ *
+ * Description: return len
+ *
+ * Return: len
+ */
+int len(char *s)
+{
+	int le;
+
+	le = 0;
+	while(*s != '\0')
+	{
+		le++;
+		s++;
+	}
+
+	return (le++);
+}
+/**
  * rev_string -print string in reverse
  * @s: input string
  *
@@ -7,23 +28,24 @@
  */
 void rev_string(char *s)
 {
-	int len;
+	int length;
+	char cp[len(s)];
 	int i;
 
-	len = 1;
-	while (*s != '\0')
+        length =len(s);
+	for(i = 0 ; i < length; i++)
 	{
-		len++;
 		s++;
 	}
-	s = s - 1;
-
-	char r[len];
-
-	for (i = 0; i < len - 1; i++)
+	for(i = 0; i < length; i++)
 	{
-		r[i] = *(s--);
-
+		--s;
+		cp[i]=*s;
+		
 	}
-	*s  = r;
+	for (i = 0; i < length; i++)
+	{
+		s[i]=cp[i];
+	}
+
 }
