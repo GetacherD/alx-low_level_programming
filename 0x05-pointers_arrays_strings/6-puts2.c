@@ -16,9 +16,10 @@ void puts2(char *str)
 		len++;
 		str += 2;
 	}
-	for (i = 0; i < len; i += 2)
+	for (i = 0; i < len; i++)
 	{
-		_putchar(cp[i]);
+		if (i % 2 == 0)
+			_putchar(cp[i]);
 	}
 	_putchar('\n');
 }
