@@ -39,8 +39,8 @@ void rev_string(char *s)
 	}
 	for(i = 0; i < length; i++)
 	{
-		--s;
 		cp[i]=*s;
+		s--;
 		
 	}
 	for (i = 0; i < length; i++)
