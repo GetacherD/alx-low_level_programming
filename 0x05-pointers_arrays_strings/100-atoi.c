@@ -154,15 +154,9 @@ int _atoi(char *s)
 	else
 		sign = -1;
 	if (num > INT_MAX)
-	{
 		return (-1 * sign * num);
-	}
-	else if(num < INT_MIN)
-	{
-		return (INT_MIN);
-	}
-	else
-	{
+	else if (num > INT_MIN)
 		return (sign * num);
-	}
+	else
+		return (INT_MIN);
 }
