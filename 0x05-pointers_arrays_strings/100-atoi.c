@@ -71,18 +71,30 @@ int power(int x, int y)
 int F(char *s)
 {
 	int i;
-
+	int neg;
+	
+	neg = 0;
 	i = 0;
 	while (s[i] != '\0')
 	{
+		if (s[i] == '-')
+		{
+			neg++;
+		}
 		if ((s[i] >= '0') && (s[i] <= '9'))
 		{
 			break;
 		}
 		i++;
 	}
-
-	return (i);
+	if(neg % 2 == 0)
+	{
+		return (i);
+	}
+	else
+	{
+		return (-1 * i);
+	}
 }
 
 /**
@@ -98,8 +110,18 @@ int L(char *s)
 	int i;
 	int first;
 	int last;
-
+	int sign;
+	
 	first = F(s);
+	if (first < 0)
+	{
+		first = -1 * first;
+		sign = -1;
+	}
+	else
+	{
+		sign = 1;
+	}
 	last = first;
 	i = 0;
 	while (s[last] >= '0' &&  s[last] <= '9')
@@ -107,7 +129,7 @@ int L(char *s)
 		last++;
 		i++;
 	}
-	return (last);
+	return (sign * last);
 }
 
 
@@ -126,11 +148,21 @@ int _atoi(char *s)
 	char *cp = s;
 	int num;
 	int k, i;
+	int sign;
 
 	num = 0;
 	i = 0;
 	fs = F(s);
 	ls = L(s);
+	if (ls < 0)
+	{
+		ls = -1 * ls;
+		sign = -1;
+	}
+	else
+	{
+		sign = 1;
+	}
 	k = ls - fs - 1;
 	for (i = fs; i < ls; i++)
 	{
@@ -141,5 +173,5 @@ int _atoi(char *s)
 	if (prev == '-')
 		num = num * -1;
 
-	return (num);
+	return (sign * num);
 }
