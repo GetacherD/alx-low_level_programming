@@ -1,16 +1,16 @@
 #include "main.h"
 /**
- * puts_half -printhalf
- * @str: input str
+ * puts_half -puts hals
+ * @str: input
  *
- * Description: dummy 
+ * Description: put half
  */
 void puts_half(char *str)
 {
 	int len;
-	int i,half;
+	int i, half;
 	char *cp = str;
-	
+
 	len = 1;
 	while (*str != '\0')
 	{
@@ -31,4 +31,3 @@ void puts_half(char *str)
 	}
 	_putchar('\n');
 }
-	
