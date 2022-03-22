@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <limits.h>
 
 /**
  * asci - Convert asci number to digits.
@@ -152,9 +153,12 @@ int _atoi(char *s)
 		sign = 1;
 	else
 		sign = -1;
-	if (num > 214748364)
+	if (num > INT_MAX)
 	{
-		sign = -1 * sign;
+		return (-1 * sign * num);
 	}
-	return (sign * num);
+	else
+	{
+		return (sign * num);
+	}
 }
