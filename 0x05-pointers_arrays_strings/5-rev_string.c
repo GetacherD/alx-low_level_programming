@@ -30,22 +30,14 @@ void rev_string(char *s)
 {
 	int length;
 	char *cp = s;
-	int i;
+	int i,j;
 
         length =len(s);
+	j = length -1;
 	for(i = 0 ; i < length; i++)
 	{
-		s++;
-	}
-	for(i = 0; i < length; i++)
-	{
-		cp[i]=*s;
-		s--;
-		
-	}
-	for (i = 0; i < length; i++)
-	{
-		s[i]=cp[i];
+		s[i]=cp[j];
+		j--;
 	}
 
 }
