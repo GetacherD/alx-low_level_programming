@@ -71,30 +71,18 @@ int power(int x, int y)
 int F(char *s)
 {
 	int i;
-	int neg;
-	
-	neg = 0;
+
 	i = 0;
 	while (s[i] != '\0')
 	{
-		if (s[i] == '-')
-		{
-			neg++;
-		}
 		if ((s[i] >= '0') && (s[i] <= '9'))
 		{
 			break;
 		}
 		i++;
 	}
-	if(neg % 2 == 0)
-	{
-		return (i);
-	}
-	else
-	{
-		return (-1 * i);
-	}
+
+	return (i);
 }
 
 /**
@@ -110,18 +98,8 @@ int L(char *s)
 	int i;
 	int first;
 	int last;
-	int sign;
-	
+
 	first = F(s);
-	if (first < 0)
-	{
-		first = -1 * first;
-		sign = -1;
-	}
-	else
-	{
-		sign = 1;
-	}
 	last = first;
 	i = 0;
 	while (s[last] >= '0' &&  s[last] <= '9')
@@ -129,7 +107,8 @@ int L(char *s)
 		last++;
 		i++;
 	}
-	return (sign * last);
+
+	return (last);
 }
 
 
@@ -154,24 +133,29 @@ int _atoi(char *s)
 	i = 0;
 	fs = F(s);
 	ls = L(s);
-	if (ls < 0)
-	{
-		ls = -1 * ls;
-		sign = -1;
-	}
-	else
-	{
-		sign = 1;
-	}
 	k = ls - fs - 1;
 	for (i = fs; i < ls; i++)
 	{
 		num = num + asci(cp[i]) * power(10, k);
 		k--;
 	}
-	prev = cp[fs - 1];
-	if (prev == '-')
-		num = num * -1;
-
+	sign = 0;
+	i = 0;
+	while (i <= fs)
+	{
+		if (s[i] == '-')
+		{
+			sign++;
+		}
+		i++;
+	}
+	if (sign % 2 == 0)
+		sign = 1;
+	else
+		sign = -1;
+	if (num > 214748364)
+	{
+		sign = -1 * sign;
+	}
 	return (sign * num);
 }
