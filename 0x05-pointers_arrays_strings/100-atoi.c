@@ -160,6 +160,7 @@ int _atoi(char *s)
 	else if(num < INT_MIN)
 	{
 		return (INT_MIN);
+	}
 	else
 	{
 		return (sign * num);
