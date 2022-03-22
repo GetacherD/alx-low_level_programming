@@ -31,12 +31,15 @@ void rev_string(char *s)
 	int length;
 	char *cp = s;
 	int i,j;
+	char tmp;
 
         length =len(s);
 	j = length -1;
 	for(i = 0 ; i < length; i++)
 	{
+		tmp=s[i];
 		s[i]=cp[j];
+		cp[j]=tmp;
 		j--;
 	}
 
