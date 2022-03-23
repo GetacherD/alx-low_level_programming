@@ -10,7 +10,6 @@
 char *cap_string(char *s)
 {
 	char *cp = s;
-	int IN;
 	int OUT;
 
 	OUT = 1;
