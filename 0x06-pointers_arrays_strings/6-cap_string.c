@@ -11,11 +11,15 @@ char *cap_string(char *s)
 {
 	char *cp = s;
 	int OUT;
+	int dif;
 
+	dif = 32;
 	OUT = 1;
 	while (*s != '\0')
 	{
-		if (*s < 'A' || *s > 'z')
+		if (*s == ',' || *s == ';' || *s == '.' || *s == '!' ||
+			*s == '?' || *s == '\"' || *s == '(' || *s == ')' ||
+			*s == '{' || *s == '}' || *s == '\n' || *s == '\t' || *s == ' ')
 		{
 			OUT = 1;
 		}
@@ -26,7 +30,7 @@ char *cap_string(char *s)
 		if (OUT == 1)
 		{
 			if (*(s + 1) >= 'a' && *(s + 1) <= 'z')
-				*(s + 1) = *(s + 1) - 32;
+				*(s + 1) = *(s + 1) - dif;
 		}
 		s++;
 	}
