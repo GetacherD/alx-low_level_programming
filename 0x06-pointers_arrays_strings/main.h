@@ -10,4 +10,6 @@ char *cap_string(char *);
 char *leet(char *);
 char *rot13(char *);
 int rot(int);
+void print_number(int n);
+int power(int x, int y)
 #endif
