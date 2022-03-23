@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdio.h>
 /**
  * rot -return rotated char
  * @x: char tested
@@ -20,10 +19,6 @@ int rot(int x)
 	else if ((c >= 'n' && c <= 'z') || (c >= 'N' && c <= 'Z'))
 	{
 		c = c - 13;
-	}
-	else
-	{
-		c = x;
 	}
 
 	return (c);
