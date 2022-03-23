@@ -13,7 +13,6 @@ char *cap_string(char *s)
 	int IN;
 	int OUT;
 
-	IN = 0;
 	OUT = 1;
 	while (*s != '\0')
 	{
@@ -21,12 +20,10 @@ char *cap_string(char *s)
 			*s == '?' || *s == '\"' || *s == '(' || *s == ')' ||
 			*s == '{' || *s == '}' || *s == '\n' || *s == '\t' || *s == ' ')
 		{
-			IN = 0;
 			OUT = 1;
 		}
 		else
 		{
-			IN = 1;
 			OUT = 0;
 		}
 		if (OUT == 1)
