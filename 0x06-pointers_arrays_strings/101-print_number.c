@@ -1,65 +1,110 @@
 #include "main.h"
 /**
- * power - return x to power of y
+ * ascii -convert to asci number
+ * @n: input digit
+ *
+ * Description: convert the digit to its asci code
+ *
+ * Return: the digits asci code
+ */
+
+int ascii(int n)
+{
+	switch (n)
+	{
+	case 0:
+		return (48);
+	case 1:
+		return (49);
+	case 2:
+		return (50);
+	case 3:
+		return (51);
+	case 4:
+		return (52);
+	case 5:
+		return (53);
+	case 6:
+		return (54);
+	case 7:
+		return (55);
+	case 8:
+		return (56);
+	case 9:
+		return (57);
+	default:
+		return (0);
+	}
+}
+
+/**
+ * power - gives power of x  to y
  * @x: base
  * @y: exponent
- * Description: power x to y
  *
- * Return: x to power of y
+ * Description:  calculate x to the power of y
+ *
+ * Return: x ^ y
  */
+
 int power(int x, int y)
 {
-	int cp, i;
+	int i;
+	int cp;
 
 	cp = x;
-	i = 1;
-	if (y <= 0)
+	for (i = 1; i < y; i++)
 	{
-		x = 1;
-	}
-	else if (y > 0)
-	{
-		while (i < y)
-		{
-			x = x * cp;
-			i++;
-		}
+		x *= cp;
 	}
 
 	return (x);
 }
+
 /**
- * print_number -print numbers
- * @n: input number
+ * print_number -print any number
+ * @n: the number to be printed
  *
- * Description: prints a number
+ * Description: this function prints any number
  */
+
 void print_number(int n)
 {
+	int m;
+	int i;
 	int digits;
-	int cp;
-	int i, sign;
+	int b;
 
-	sign = 1;
+	b = 10;
+	digits = 1;
+	m = n;
 	if (n < 0)
 	{
-		n = -n;
-		sign = -1;
+		_putchar('-');
 	}
-	cp = n;
-	digits = 1;
-	while (n / 10 != 0)
+	while ((n / b) != 0)
 	{
 		digits++;
-		n = n / 10;
+		n = n / b;
 	}
-	if (sign < 0)
+	for (i = digits - 1; i > 0; i--)
 	{
-		putchar('-');
+		if (m < 0)
+		{
+			_putchar(ascii((-1) * (m / power(b, i))));
+		}
+		else
+		{
+			_putchar(ascii(m / power(b, i)));
+		}
+		m %= power(b, i);
 	}
-	for (i = digits - 1; i >= 0; i--)
+	if (m < 0)
 	{
-		putchar((cp / power(10, i)) + '0');
-		cp = cp % power(10, i);
+		_putchar(ascii((-1) * m));
+	}
+	else
+	{
+		_putchar(ascii(m));
 	}
 }
