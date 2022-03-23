@@ -74,7 +74,9 @@ void print_number(int n)
 	int i;
 	int digits;
 	int b;
+	int sign;
 
+	sign = 1;
 	b = 10;
 	digits = 1;
 	m = n;
@@ -91,7 +93,7 @@ void print_number(int n)
 	{
 		if (m < 0)
 		{
-			_putchar(ascii((-1) * (m / power(b, i))));
+			_putchar(ascii((-sign) * (m / power(b, i))));
 		}
 		else
 		{
@@ -101,7 +103,7 @@ void print_number(int n)
 	}
 	if (m < 0)
 	{
-		_putchar(ascii((-1) * m));
+		_putchar(ascii((-sign) * m));
 	}
 	else
 	{
