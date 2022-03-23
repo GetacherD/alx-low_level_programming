@@ -11,7 +11,6 @@ char *cap_string(char *s)
 {
 	char *cp = s;
 	int OUT;
-	int 
 
 	OUT = 1;
 	while (*s != '\0')
