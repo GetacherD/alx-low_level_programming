@@ -11,5 +11,6 @@ char *leet(char *);
 char *rot13(char *);
 int rot(int);
 void print_number(int n);
-int power(int x, int y)
+int power(int x, int y);
+void _putchar(char s);
 #endif
