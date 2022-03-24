@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "main.h"
 /**
  * leet -encode to 1337
@@ -10,20 +11,23 @@
 char *leet(char *s)
 {
 	char *cp = s;
-
-	while (*s != '\0')
-	{
-		if (*s == 'a' || *s == 'A')
-			*s = '4';
-		else if (*s == 'e' || *s == 'E')
-			*s = '3';
-		else if (*s == 'o' || *s == 'O')
-			*s = '0';
-		else if (*s == 't' || *s == 'T')
-			*s = '7';
-		else if (*s == 'l' || *s == 'L')
-			*s = '1';
-		s++;
+	int i, j;
+	char leet[] ={'0','l','?','e','a','?','?','t'};
+	
+	i = 0;
+	while (s[i] != '\0')
+	{ 
+		j = 0;
+		while (j < 8)
+		{
+			if(s[i] == leet[j])
+			{
+				s[i] = j;
+				break;
+			}
+			j++;
+		}
+		i++;
 	}
 
 	return (cp);
