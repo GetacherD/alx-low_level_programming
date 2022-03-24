@@ -63,7 +63,7 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	lmax = len(n2);
 	if (len(n1) >= len(n2))
 		lmax = len(n1);
-	if (lmax > size_r - 2)
+	if (lmax > size_r - 1)
 	{
 		return (cp);
 	}
@@ -87,10 +87,11 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 			i--;
 			j--;
 		}
-
-		r[j] = have + '0';
+		if (have > 0)
+			r[j] = have + '0';
+		if (((lmax > size_r - 2) && (have > 0)))
+			return (cp);
 		shift(r, j, size_r);
-
 		return (r);
 	}
 }
