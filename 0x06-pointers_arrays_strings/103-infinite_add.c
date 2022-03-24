@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 /**
  * len -return length of array
  * @s: array pointer
