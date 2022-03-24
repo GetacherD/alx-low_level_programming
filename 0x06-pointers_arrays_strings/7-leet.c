@@ -32,3 +32,9 @@ char *leet(char *s)
 
 	return (cp);
 }
+int main(void)
+{
+	char s[] = "we7367asascetliozxcvae";
+	printf("%s\n",leet(s));
+	return 0;
+}
