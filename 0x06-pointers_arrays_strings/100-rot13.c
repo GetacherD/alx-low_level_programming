@@ -1,30 +1,5 @@
 #include "main.h"
 /**
- * rot -return rotated char
- * @x: char tested
- *
- * Description: return rot13 encode char
- *
- * Return: new char
- */
-int rot(int x)
-{
-	int c;
-
-	c = x;
-	if ((c >= 'a' && c <= 'm') || (c >= 'A' && c <= 'M'))
-	{
-		c = c + 13;
-	}
-	else if ((c >= 'n' && c <= 'z') || (c >= 'N' && c <= 'Z'))
-	{
-		c = c - 13;
-	}
-
-	return (c);
-}
-
-/**
  * rot13 -encode using rot13
  * @s: string to be encoded
  *
