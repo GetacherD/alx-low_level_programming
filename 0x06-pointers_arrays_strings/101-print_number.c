@@ -8,7 +8,7 @@
  */
 void prn(int n)
 {
-	if (n < 0 && n >= INT_MIN)
+	if (n < 0 || n > INT_MAX)
 	{
 		n = -n;
 		_putchar('-');
