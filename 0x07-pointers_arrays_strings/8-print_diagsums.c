@@ -9,24 +9,26 @@
  */
 void print_diagsums(int *a, int size)
 {
-	int i, j, sumL,sumR;
+	int i, sumL, sumR, col, row;
 
 	sumL = 0;
 	sumR = 0;
-	for(i = 0; i < size; i++)
+	row = 0;
+	col = 0;
+	for (i = 0; i < size * size; i++)
 	{
-		for (j = size -1;j >= 0; j--)
+		if (col > size - 1)
 		{
-			if (i == j)
-			{
-				sumL = sumL + a[i][j];
-			}
-			if( i + j == size - 1)
-			{
-				sumR = sumR +a[i][j];
-			}
+			col = 0;
+			row++;
 		}
+		if (col == row)
+			sumL = sumL + a[i];
+		if (col + row == size - 1)
+			sumR = sumR + a[i];
+		col++;
 	}
-	printf("%d, %d\n", sumL,sumR);
+
+	printf("%d, %d\n", sumL, sumR);
 }
 
