@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 /**
  * _strstr -locate substrig
  * @haystack: main sytring
@@ -12,6 +13,7 @@ char *_strstr(char *haystack, char *needle)
 {
 	char *cp = haystack;
 	int found, i, j;
+	char *nu = NULL;
 
 	found = 1;
 	i = 0;
@@ -42,9 +44,9 @@ char *_strstr(char *haystack, char *needle)
 		j++;
 	}
 	if (found == -1)
-		return (0);
+		return (nu);
 	else
-		return (0);
+		return (nu);
 }
 
 
