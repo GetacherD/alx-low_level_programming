@@ -37,8 +37,9 @@ unsigned int _strspn(char *s, char *accept)
 		}
 		count = 0;
 		i++;
+		j = 0;
 	}
 
-	return (max - 1);
+	return (max + 1);
 }
 
