@@ -23,6 +23,10 @@ char *_strchr(char *s, char c)
 		}
 		i++;
 	}
+	if ('\0' == c)
+	{
+		return (&s[i]);
+	}
 
 	return (n);
 }
