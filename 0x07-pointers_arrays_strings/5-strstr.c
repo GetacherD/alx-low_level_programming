@@ -17,11 +17,13 @@ char *_strstr(char *haystack, char *needle)
 
 	found = 1;
 	i = 0;
+	if (*needle == '\0')
+		return (cp);
+
 	while (cp[j] != '\0')
 	{
 		while (needle[i] != '\0')
 		{
-			
 			if ((cp[j + i] == '\0') || (cp[j + i] != needle[i]))
 			{
 
@@ -33,9 +35,8 @@ char *_strstr(char *haystack, char *needle)
 			{
 				i++;
 			}
-	
 		}
-		if(found == 1)
+		if (found == 1)
 		{
 			return (&cp[j]);
 		}
