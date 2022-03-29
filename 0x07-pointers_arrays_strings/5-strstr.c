@@ -17,18 +17,14 @@ char *_strstr(char *haystack, char *needle)
 	int f;
 
 	i = j  = 0;
-	printf("haystck empty=%d\n",*haystack == '\0');
-	printf("needle empty=%d\n",*needle == '\0');
 	if (*haystack == '\0')
 		return (haystack);
 	if (*needle == '\0')
 		return (needle);
-	while(haystack[i])
+	while (haystack[i])
 	{
 		while (needle[j] && haystack[i + j])
 		{
-			printf("hay[i+j] =%c\t",haystack[i + j]);
-			printf("needle[j] =%c\n",needle[j]);
 			if (needle[j] != haystack[i + j])
 			{
 				f = 0;
