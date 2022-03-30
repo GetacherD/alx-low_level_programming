@@ -7,28 +7,26 @@
  *
  * Description: divide rec
  *
- * return: factor
+ * Return: factor
  */
 int divr(int n, int i)
 {
 	int ii;
 
 	ii = i;
+	if (n == 1)
+		return (1);
 	if (n % ii == 0 && n % (ii * ii) == 0)
 	{
 		return (ii * divr(n / (ii * ii), i));
 	}
 	else if (ii < n / 2)
 	{
-		return (divr(n, i+1));
+		return (divr(n, i + 1));
 	}
 	else
 	{
-		if (n == 1)
-		
-			return (1);
-		else
-			return (-1);
+		return (-1);
 	}
 }
 /**
@@ -43,9 +41,7 @@ int _sqrt_recursion(int n)
 {
 	if (n < 0)
 		return (-1);
-	else if (n == 0)
+	if (n == 0)
 		return (0);
-	else
-
-		return (divr(n, 2));
+	return (divr(n, 2));
 }
