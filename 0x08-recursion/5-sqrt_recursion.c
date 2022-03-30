@@ -41,6 +41,9 @@ int divr(int n, int i)
  */
 int _sqrt_recursion(int n)
 {
+	if (n < 0)
+		return (-1);
+	else
 
-	return (divr(n, 2));
+		return (divr(n, 2));
 }
