@@ -34,21 +34,6 @@ void prints(char *s)
 	_putchar('\n');
 }
 /**
- * toInt -convert alpha to int
- * @s: char input
- *
- * Description: convert string to num
- *
- * Return: num
- */
-int toInt(char s)
-{
-	if (s >= '0' && s <= '9')
-		return (s - '0');
-	else
-		return (-1);
-}
-/**
  * main -entry point
  * @argc: number of argumnets
  * @argv: argumnet vector
@@ -61,7 +46,7 @@ int main(int argc, char **argv)
 {
 	int i;
 
-	if (argc < 3)
+	if (argc != 3)
 	{
 		prints("Error");
 
