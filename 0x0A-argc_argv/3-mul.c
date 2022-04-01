@@ -64,6 +64,8 @@ int main(int argc, char **argv)
 	if (argc < 3)
 	{
 		prints("Error");
+
+		return (1);
 	}
 	else
 	{
