@@ -44,7 +44,7 @@ void print_num(int n)
  */
 int main(int argc, char **argv)
 {
-	int ch[] = {25, 10, 5, 2, 1};
+	int ch[5] = {25, 10, 5, 2, 1};
 	int i, n, sum;
 
 	sum = 0;
