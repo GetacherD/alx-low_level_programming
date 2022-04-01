@@ -28,7 +28,10 @@ void print_num(int n)
  */
 int main(int argc, char **argv __attribute__((unused)))
 {
-	print_num(argc - 1);
+	if (argc == 1)
+		_putchar('0');
+	else
+		print_num(argc - 1);
 	_putchar('\n');
 
 	return (0);
