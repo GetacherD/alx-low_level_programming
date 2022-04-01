@@ -44,15 +44,32 @@ void prints(char *s)
  */
 int main(int argc, char **argv)
 {
-	int i;
-
+	int i, m;
+	m = 1;
 	if (argc != 3)
 	{
 		prints("Error");
 
 		return (1);
 	}
-	i = atoi(argv[1]) * atoi(argv[2]);
+	if (argv[1][0] == '-')
+
+	{
+		argv[1][0] = '0';
+		m = (-1) * m;
+	}
+	if (argv[2][0] == '-')
+	{
+		argv[2][0] = '0';
+		m = (-1) * m;
+	}
+	if (m < 0)
+	{
+		_putchar('-');
+	}
+
+	
+	i =atoi(argv[1]) * atoi(argv[2]);
 	print_num(i);
 	_putchar('\n');
 
