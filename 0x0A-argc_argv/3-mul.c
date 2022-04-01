@@ -45,6 +45,7 @@ void prints(char *s)
 int main(int argc, char **argv)
 {
 	int i, m;
+
 	m = 1;
 	if (argc != 3)
 	{
@@ -67,9 +68,7 @@ int main(int argc, char **argv)
 	{
 		_putchar('-');
 	}
-
-	
-	i =atoi(argv[1]) * atoi(argv[2]);
+	i = atoi(argv[1]) * atoi(argv[2]);
 	print_num(i);
 	_putchar('\n');
 
