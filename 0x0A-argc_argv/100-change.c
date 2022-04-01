@@ -1,5 +1,6 @@
 #include "main.h"
 #include <stdlib.h>
+#include <stdio.h>
 /**
  * prints -print string
  * @s: string to be printed
@@ -44,31 +45,36 @@ void print_num(int n)
  */
 int main(int argc, char **argv)
 {
-	int ch[5] = {25, 10, 5, 2, 1};
+	int ch[5];
 	int i, n, sum;
 
 	sum = 0;
+	ch[0] = 25;
+	ch[1] = 10;
+	ch[2] = 5;
+	ch[3] = 2;
+	ch[4] = 1;
 	if (argc != 2)
 	{
 		prints("Error");
 
 		return (1);
 	}
-	n = atoi(argv[1]);
-	if (n < 0)
+	if (argv[1][0] == '-')
 	{
-		sum = 0;
+		prints("0");
 	}
 	else
 	{
+		n = atoi(argv[1]);
 		for (i = 0; i < 5; i++)
 		{
 			sum = sum + n / ch[i];
 			n = n % ch[i];
 		}
+		print_num(sum);
+		_putchar('\n');
 	}
-	print_num(sum);
-	_putchar('\n');
 
 	return (0);
 }
