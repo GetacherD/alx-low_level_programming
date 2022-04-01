@@ -69,7 +69,9 @@ int main(int argc, char **argv)
 		n = atoi(argv[1]);
 		if (n == 0)
 		{
-			prints("0");
+			prints("Error");
+
+			return (1);
 		}
 		else
 		{
