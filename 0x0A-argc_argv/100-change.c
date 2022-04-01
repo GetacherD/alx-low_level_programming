@@ -67,23 +67,13 @@ int main(int argc, char **argv)
 	else
 	{
 		n = atoi(argv[1]);
-		if (n == 0)
+		for (i = 0; i < 5; i++)
 		{
-			prints("Error");
-
-			return (1);
+			sum = sum + n / ch[i];
+			n = n % ch[i];
 		}
-		else
-		{
-			for (i = 0; i < 5; i++)
-			{
-				sum = sum + n / ch[i];
-				n = n % ch[i];
-			}
-			print_num(sum);
-			_putchar('\n');
-		}
+		print_num(sum);
+		_putchar('\n');
 	}
-	printf("what is result of string parse %d\n", atoi("sd"));
 	return (0);
 }
