@@ -9,6 +9,7 @@ void print_num(int n)
 {
 	if (n % 10 == 0 && n / 10 == 0)
 	{
+		_putchar('\n');
 		return;
 	}
 	else
@@ -29,7 +30,6 @@ void print_num(int n)
 int main(int argc, char **argv __attribute__((unused)))
 {
 	print_num(argc - 1);
-	_putchar('\n');
 
 	return (0);
 }
