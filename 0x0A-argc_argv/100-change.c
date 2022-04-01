@@ -75,5 +75,6 @@ int main(int argc, char **argv)
 		print_num(sum);
 		_putchar('\n');
 	}
+
 	return (0);
 }
