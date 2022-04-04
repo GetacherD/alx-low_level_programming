@@ -19,7 +19,7 @@ char *argstostr(int ac, char **av)
 
 	if (ac == 0 || av == NULL)
 		return (NULL);
-	for (i = 0; i < ac - 2; i++)
+	for (i = 0; i < ac; i++)
 	{
 		while (av[i][j] != '\0')
 		{
@@ -30,7 +30,7 @@ char *argstostr(int ac, char **av)
 	}
 
 
-	args = (char *)malloc(sizeof(char) * (len + ac));
+	args = (char *)malloc(sizeof(char) * (len + ac + 1));
 	if (args == NULL)
 		return (NULL);
 	cp = args;
