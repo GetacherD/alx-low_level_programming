@@ -103,7 +103,7 @@ char **strtow(char *str)
 	int mainL;
 	char **D;
 
-	if (str == NULL || (*str == ' ' && *(str + 1) == '\0') || *str == '\0')
+	if (str == NULL || ((*str == ' ') && (*(str + 1) == '\0')) || *str == '\0')
 		return (NULL);
 	mainL = len_word(str);
 	D = (char **)malloc(sizeof(char *) * mainL + 2);
