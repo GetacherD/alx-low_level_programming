@@ -30,7 +30,7 @@ char *argstostr(int ac, char **av)
 	}
 
 
-	args = (char *)malloc(sizeof(char) * (len + ac - 1));
+	args = (char *)malloc(sizeof(char) * (len + ac));
 	if (args == NULL)
 		return (NULL);
 	cp = args;
