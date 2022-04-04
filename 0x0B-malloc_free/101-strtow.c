@@ -106,6 +106,8 @@ char **strtow(char *str)
 	if (str == NULL || ((str[0] == ' ') && (str[1] == '\0')) || *str == '\0')
 		return (NULL);
 	mainL = len_word(str);
+	if (mainL == 0)
+		return (NULL);
 	D = (char **)malloc(sizeof(char *) * mainL + 2);
 	if (D == NULL)
 		return (NULL);
