@@ -103,10 +103,10 @@ char **strtow(char *str)
 	int mainL;
 	char **D;
 
-	if (str == NULL || *str == '\0')
+	if (str == NULL || (*str == ' ' && *(str + 1) == '\0'))
 		return (NULL);
 	mainL = len_word(str);
-	D = (char **)malloc(sizeof(char *) * (mainL + 1));
+	D = (char **)malloc(sizeof(char *) * mainL + 1);
 	if (D == NULL)
 		return (NULL);
 	return (getArray(D, str));
