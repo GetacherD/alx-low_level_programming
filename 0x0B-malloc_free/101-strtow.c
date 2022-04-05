@@ -66,7 +66,7 @@ char **getArray(char **D, char *str)
 				return (NULL);
 			}
 			for (j = wc - 1 ; j >= 0; j--)
-				D[k][j] = str[i - (wc - j)];
+				D[k][j] = str[i - (wc - (j + 1))];
 			D[k][wc] = '\0';
 			k++;
 			wc = 0;
