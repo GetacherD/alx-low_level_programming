@@ -14,26 +14,19 @@ int len_word(char *str)
 	int i, mainL;
 
 	mainL = i = 0;
+	if (str[0] != ' ' && str[0] != '\0')
+	{
+		mainL++;
+		i++;
+	}
+	if (str[0] == ' ')
+		i++;
+
 	while (str[i] != '\0')
 	{
-		if (str[i] == ' ' && i == 0)
-		{
-			i++;
-		}
-		else if (str[i] != ' ' && i == 0)
-		{
+		if (str[i - 1] == ' ' && str[i] != ' ')
 			mainL++;
-			i++;
-		}
-		else if (str[i - 1] == ' ' && str[i] != ' ')
-		{
-			mainL++;
-			i++;
-		}
-		else
-		{
-			i++;
-		}
+		i++;
 	}
 
 	return (mainL);
