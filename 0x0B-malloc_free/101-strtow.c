@@ -95,7 +95,7 @@ char **strtow(char *str)
 	mainL = len_word(str);
 	if (mainL == 0)
 		return (NULL);
-	D = (char **)malloc(sizeof(char *) * mainL + 2);
+	D = (char **)malloc(sizeof(char *) * (mainL + 1));
 	if (D == NULL)
 		return (NULL);
 	return (getArray(D, str));
