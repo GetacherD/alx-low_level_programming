@@ -48,17 +48,15 @@ char **getArray(char **D, char *str)
 	wc = i = j = k = reset = 0;
 	while (str[i] != '\0')
 	{
-		if (((str[i] != ' ' && str[i - 1] == ' ') ||
-					(str[i] != ' ' && str[i - 1] != ' ')) && (str[i + 1] != '\0'))
+		if ((str[i] != ' ' && str[i - 1] == ' ') ||
+					(str[i] != ' ' && str[i - 1] != ' '))
 		{
 			wc++;
-			i++;
 
 		}
-		else if ((str[i] == ' ' && str[i - 1] != ' ') ||
+		if ((str[i] != ' ' && str[i + 1] == ' ') ||
 				(str[i] != ' ' && str[i + 1] == '\0'))
 		{
-			wc++;
 			D[k] = (char *)malloc(sizeof(char) * (wc + 1));
 			if (D[k] == NULL)
 			{
@@ -67,17 +65,13 @@ char **getArray(char **D, char *str)
 				free(D);
 				return (NULL);
 			}
-			for (j = wc - 1; j >= 0; j--)
-				D[k][j] = str[i - (wc - 1 - j)];
+			for (j = wc - 1 ; j >= 0; j--)
+				D[k][j] = str[i - (wc - j)];
 			D[k][wc] = '\0';
 			k++;
 			wc = 0;
-			i++;
 		}
-		else
-		{
-			i++;
-		}
+		i++;
 	}
 
 	return (D);
@@ -101,7 +95,7 @@ char **strtow(char *str)
 	mainL = len_word(str);
 	if (mainL == 0)
 		return (NULL);
-	D = (char **)malloc(sizeof(char *) * (mainL + 2));
+	D = (char **)malloc(sizeof(char *) * mainL + 2);
 	if (D == NULL)
 		return (NULL);
 	return (getArray(D, str));
