@@ -12,12 +12,18 @@
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
 	void *mem;
+	char *filler;
+	unsigned int i;
 
 	if (nmemb == 0 || size == 0)
 		return (NULL);
 	mem = malloc(nmemb * size);
 	if (mem == NULL)
 		return (NULL);
+	filler = mem;
+	for (i = 0; i < nmemb; i++)
+		filler[i] = '\0';
+
 	return (mem);
 }
 
