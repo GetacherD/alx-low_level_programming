@@ -9,9 +9,9 @@
  *
  * Return: length excluding null char
  */
-int len(char *s)
+unsigned int len(char *s)
 {
-	int le;
+	unsigned int le;
 
 	le = 0;
 	while (*s != '\0')
@@ -32,7 +32,7 @@ int len(char *s)
  */
 char *RevStr(char *s)
 {
-	int i, j;
+	unsigned int i, j;
 	char tmp;
 
 	j = len(s) - 1;
@@ -78,10 +78,10 @@ char aschar(int n)
  *
  * Return: pointer to allocated memory
  */
-char *_malloc(int size)
+char *_malloc(unsigned int size)
 {
 	char *m;
-	int i;
+	unsigned int i;
 
 	m = malloc(sizeof(char) * (size + 1));
 	if (m == NULL)
@@ -102,7 +102,7 @@ char *_malloc(int size)
  */
 char *mcp(char *src, char *dest)
 {
-	int i;
+	unsigned int i;
 
 	for (i = 0; i < len(dest); i++)
 		dest[i] = src[i];
@@ -115,9 +115,9 @@ char *mcp(char *src, char *dest)
  *
  * Description: reallocate memory
  */
-void _realloc_print(char *r, int s)
+void _realloc_print(char *r, unsigned int s)
 {
-	int size, i;
+	unsigned int size, i;
 	char *RR, *R;
 
 	i = 0;
@@ -146,10 +146,11 @@ void _realloc_print(char *r, int s)
  *
  * Return: pointer to result array
  */
-char *sumArray(char **src, int row, int col, int size)
+char *sumArray(char **src, unsigned int row,
+		unsigned int col, unsigned int size)
 {
 	char *result;
-	int co, sum, j, i;
+	unsigned int co, sum, j, i;
 
 	co = sum = 0;
 	result = malloc(sizeof(char) * size);
@@ -199,9 +200,10 @@ void print_s(char *s)
  *
  * Return: pointer to filled array
  */
-char **fill_array(char **mArray, int row, int col, char *num2)
+char **fill_array(char **mArray, unsigned int row,
+		unsigned int col, char *num2)
 {
-	int tmp, i, j, co;
+	unsigned int tmp, i, j, co;
 
 	co = 0;
 	for (i = 0; i < row; i++)
@@ -231,10 +233,10 @@ char **fill_array(char **mArray, int row, int col, char *num2)
  *
  * Return: pointer to twoD array
  */
-char **init_array(int row, int col, char *num1, char *num2)
+char **init_array(unsigned int row, unsigned int col, char *num1, char *num2)
 {
 	char **mArray;
-	int i, j;
+	unsigned int i, j;
 
 	mArray = malloc(sizeof(char *) * row);
 	if (mArray == NULL)
@@ -277,7 +279,7 @@ char **init_array(int row, int col, char *num1, char *num2)
  */
 int check_zero(char *s)
 {
-	int i;
+	unsigned int i;
 
 	i = 0;
 	while (*s != '\0')
@@ -303,7 +305,7 @@ int main(int argc, char **argv)
 {
 	char *num1, *num2, *r, *result;
 	char **mArray;
-	int i, row, col, size;
+	unsigned int i, row, col, size;
 
 	if (argc != 3)
 	{
