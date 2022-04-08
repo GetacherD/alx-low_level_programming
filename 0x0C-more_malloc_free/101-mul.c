@@ -128,7 +128,9 @@ void _realloc_print(char *r, int s)
 	size = s  - i;
 	RR = _malloc(size);
 	if (RR == NULL)
-		return;
+	{
+		exit(98);
+	}
 	R = mcp(&r[i], RR);
 	printf("%s\n", R);
 	free(RR);
