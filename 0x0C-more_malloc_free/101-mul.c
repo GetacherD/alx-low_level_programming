@@ -85,7 +85,7 @@ char *_malloc(unsigned int size)
 
 	m = malloc(sizeof(char) * (size + 1));
 	if (m == NULL)
-		return (NULL);
+		exit(98);
 	for (i = 0; i < size; i++)
 		m[i] = '0';
 	m[size] = '\0';
@@ -155,7 +155,7 @@ char *sumArray(char **src, unsigned int row,
 	co = sum = 0;
 	result = malloc(sizeof(char) * size);
 	if (result == NULL)
-		return (NULL);
+		exit(98);
 	co = 0;
 	sum = 0;
 
@@ -240,7 +240,7 @@ char **init_array(unsigned int row, unsigned int col, char *num1, char *num2)
 
 	mArray = malloc(sizeof(char *) * row);
 	if (mArray == NULL)
-		return (NULL);
+		exit(98);
 	for (i = 0; i < row; i++)
 	{
 		mArray[i] = malloc(sizeof(char) * col);
@@ -249,7 +249,7 @@ char **init_array(unsigned int row, unsigned int col, char *num1, char *num2)
 			for (j = 0; j < i; j++)
 				free(mArray[j]);
 			free(mArray);
-			return (NULL);
+			exit(98);
 		}
 	}
 	for (i = 0; i < row; i++)
