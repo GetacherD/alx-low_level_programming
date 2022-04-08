@@ -301,7 +301,7 @@ int check_zero(char *s)
 
 int main(int argc, char **argv)
 {
-	char *num1, *num2, *r, *result;
+	char *num1, *num2, *result;
 	char **mArray;
 	int i, row, col, size;
 
@@ -336,9 +336,9 @@ int main(int argc, char **argv)
 		}
 	mArray = init_array(row, col, num1, num2);
 	result = sumArray(mArray, row, col, size);
-	r = RevStr(result);
-	_realloc_print(r, size);
-	free(r);
+	_realloc_print(RevStr(result), size);
+	free(result);
+	free(mArray);
 
 	return (0);
 }
