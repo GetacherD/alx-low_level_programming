@@ -306,7 +306,7 @@ int main(int argc, char **argv)
 		print_s("Error");
 		exit(98);
 	}
-	if (check_zero(argv[1]) == 0 || check_zero(argv[2]))
+	if (check_zero(argv[1]) == 0 || check_zero(argv[2]) == 0)
 	{
 		_putchar('0');
 		_putchar('\n');
