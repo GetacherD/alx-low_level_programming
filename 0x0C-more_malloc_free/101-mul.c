@@ -191,6 +191,7 @@ void print_s(char *s)
  * @mArray: input array
  * @row: number of rows
  * @col: number of colmuns
+ * @num2: second number
  *
  * Description: fill array with nums
  *
@@ -262,7 +263,28 @@ char **init_array(int row, int col, char *num1, char *num2)
 
 	return (mArray);
 }
+/**
+ * check_zero -check if all are zero
+ * @s: string
+ *
+ * Description: check if all are zero
+ *
+ * Return: value if zero
+ */
+int check_zero(char *s)
+{
+	int i;
 
+	i = 0;
+	while (*s != '\0')
+	{
+		if (*s != '0')
+			i++;
+		s++;
+	}
+
+	return (i);
+}
 /**
  * main -entry point
  * @argc: number of argumnents
@@ -275,10 +297,8 @@ char **init_array(int row, int col, char *num1, char *num2)
 
 int main(int argc, char **argv)
 {
-	char *num1, *num2;
+	char *num1, *num2, *r, *result;
 	char **mArray;
-	char *result;
-	char *r;
 	int i, row, col, size;
 
 	if (argc != 3)
@@ -286,6 +306,13 @@ int main(int argc, char **argv)
 		print_s("Error");
 		exit(98);
 	}
+	if (check_zero(argv[1]) == 0 || check_zero(argv[2]))
+	{
+		_putchar('0');
+		_putchar('\n');
+		return (0);
+	}
+
 	num1 = RevStr(argv[1]);
 	num2 = RevStr(argv[2]);
 	row = len(num2);
