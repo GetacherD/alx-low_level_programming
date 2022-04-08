@@ -314,7 +314,7 @@ int main(int argc, char **argv)
 	{
 		_putchar('0');
 		_putchar('\n');
-		return (0);
+		exit(98);
 	}
 
 	num1 = RevStr(argv[1]);
