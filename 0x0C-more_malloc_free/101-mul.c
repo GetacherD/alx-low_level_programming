@@ -237,6 +237,8 @@ char **init_array(int row, int col, char *num1, char *num2)
 	int i, j;
 
 	mArray = malloc(sizeof(char *) * row);
+	if (mArray == NULL)
+		return (NULL);
 	for (i = 0; i < row; i++)
 	{
 		mArray[i] = malloc(sizeof(char) * col);
