@@ -8,9 +8,12 @@
  *
  * Return: 0 always
  */
-int main(int argc __attribute__((unused)), char **argv)
+int main(int argc __attribute__((unused)), char *argv[])
 {
 	char *s = argv[0];
+
+	int i__attribute__((unused));
+
 
 	while (*s)
 	{
