@@ -2,6 +2,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 /**
+ * str_len -get string length
+ * @s: string
+ *
+ * Description: return string length
+ *
+ * Return: length
+ */
+int str_len(char *s)
+{
+	int i;
+
+	i = 0;
+	while (s[i] != '\0')
+		i++;
+	return (i);
+}
+/**
  * str_cpy -copy char buffer
  * @src: source
  * @dest: destination
@@ -38,12 +55,21 @@ void str_cpy(char *src, char *dest)
 dog_t *new_dog(char *name, float age, char *owner)
 {
 	dog_t *dog;
-
+	int lname, lowner;
+	
+	if (name == NULL)
+		lname = 0;
+	else
+		lname = str_len(name);
+	if (owner == NULL)
+		lowner = 0;
+	else
+		lowner = str_len(owner);
 	dog = malloc(sizeof(dog_t));
 	if (dog == NULL)
 		return (NULL);
-	(*dog).name = malloc(sizeof(name));
-	(*dog).owner = malloc(sizeof(owner));
+	(*dog).name = malloc(sizeof(char) * (lname));
+	(*dog).owner = malloc(sizeof(char) * (lowner));
 
 	if ((*dog).name == NULL || (*dog).owner == NULL)
 	{
