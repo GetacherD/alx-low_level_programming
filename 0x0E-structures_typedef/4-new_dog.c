@@ -70,11 +70,6 @@ dog_t *new_dog(char *name, float age, char *owner)
 		return (NULL);
 	(*dog).name = malloc(sizeof(char) * (lname));
 	(*dog).owner = malloc(sizeof(char) * (lowner));
-	printf("len name= %d\n", lname);
-	printf("len owner= %d\n", lowner);
-	printf(" dog.name= %p\n", (*dog).name);
-	printf(" dog.owner= %p\n", (*dog).owner);
-
 	if ((*dog).name == NULL || (*dog).owner == NULL)
 	{
 		free((*dog).name);
