@@ -2,6 +2,28 @@
 #include <stdio.h>
 #include <stdlib.h>
 /**
+ * str_cpy -copy char buffer
+ * @src: source
+ * @dest: destination
+ *
+ * Description: copy strings
+ *
+ * Return: pointer to destination
+ */
+void str_cpy(char *src, char *dest)
+{
+	char *cp;
+
+	cp = dest;
+	while (*src != '\0')
+	{
+		*cp = *src;
+		cp++;
+		src++;
+	}
+	*cp = '\0';
+}
+/**
  * new_dog -function create new dog
  * @name: new dogs name
  * @age: new dog age
@@ -18,9 +40,12 @@ dog_t *new_dog(char *name, float age, char *owner)
 	dog = malloc(sizeof(dog_t));
 	if (dog == NULL)
 		return (NULL);
-	(*dog).name = name;
+	(*dog).name = malloc(sizeof(name));
+
+	str_cpy(name, (*dog).name);
+	(*dog).owner = malloc(sizeof(owner));
 	(*dog).age = age;
-	(*dog).owner = owner;
+	str_cpy(owner, (*dog).owner);
 
 	return (dog);
 }
