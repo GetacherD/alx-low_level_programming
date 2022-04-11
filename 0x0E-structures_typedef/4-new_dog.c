@@ -15,6 +15,8 @@ void str_cpy(char *src, char *dest)
 	char *cp;
 
 	cp = dest;
+	if (src == NULL)
+		return;
 	while (*src != '\0')
 	{
 		*cp = *src;
@@ -46,6 +48,8 @@ dog_t *new_dog(char *name, float age, char *owner)
 	if ((*dog).name == NULL || (*dog).owner == NULL)
 	{
 		free(dog);
+		free((*dog).name);
+		free((*dog).owner);
 		return (NULL);
 	}
 	str_cpy(name, (*dog).name);
