@@ -8,7 +8,7 @@
  *
  * Description:structure for operation
  */
-typedef struct opp
+typedef struct op
 {
 	char *op;
 	int (*f)(int, int);
