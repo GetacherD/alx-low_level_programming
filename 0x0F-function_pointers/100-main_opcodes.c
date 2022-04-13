@@ -27,7 +27,7 @@ int main(int __attribute__((unused)) argc, char **argv)
 	fp = fopen(__FILE__, "r");
 	if (fp == NULL)
 		return (-1);
-	for (i = 0; i < atoi(argv[1]); i++)
+	for (i = 0; i < atoi(argv[1]) + 108; i++)
 	{
 		ch = fgetc(fp);
 		if (i > 108)
