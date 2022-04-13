@@ -4,6 +4,8 @@
 #include <stdlib.h>
 /**
  * main -entry point to program
+ * @argc: number of arguments
+ * @argv: argument vector
  *
  * Description: main function
  *
