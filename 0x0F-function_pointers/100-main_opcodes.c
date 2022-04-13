@@ -9,33 +9,28 @@
  */
 int main(int __attribute__((unused)) argc, char **argv)
 {
-	FILE *fp;
 
-	char ch;
 	int i;
+	int (*ptr)(int, char **) = main;
+	unsigned char ch;
 
 	if (argc != 2)
 	{
 		printf("Error\n");
 		return (1);
 	}
-	if (argc < 0)
+	if (atoi(argv[1]) < 0)
 	{
 		printf("Error\n");
-		return (2);
+		return (0);
 	}
-	fp = fopen(__FILE__, "r");
-	if (fp == NULL)
-		return (-1);
-	for (i = 0; i < atoi(argv[1]) + 108; i++)
+	for (i = 0; i < atoi(argv[0]); i++)
 	{
-		ch = fgetc(fp);
-		if (i > 108)
-		{
-			printf("%x\t", ch);
-		}
+		ch = *(unsigned char *)ptr;
+		printf("%x ", ch);
+		ptr++;
 	}
-	fclose(fp);
 	printf("\n");
+
 	return (0);
 }
