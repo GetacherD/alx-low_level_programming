@@ -28,7 +28,10 @@ int main(int __attribute__((unused)) argc, char **argv)
 	for (i = 0; i < atoi(argv[1]); i++)
 	{
 		ch = *(unsigned char *)ptr;
-		printf("%.2x ", ch);
+		printf("%.2x", ch);
+		if (i == atoi(argv[1]) - 1)
+			continue;
+		printf(" ");
 		ptr++;
 	}
 	printf("\n");
