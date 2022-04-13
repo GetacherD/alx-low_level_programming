@@ -33,3 +33,37 @@ int (*get_op_func(char *s))(int, int)
 
 	return (NULL);
 }
+/**
+ * prints -print string
+ * @s: string input
+ *
+ * Description: prints string
+ */
+void prints(char *s)
+{
+	while (*s != '\0')
+	{
+		_putchar(*s);
+		s++;
+	}
+	_putchar('\n');
+}
+/**
+ * print_num -print number
+ * @n: number
+ *
+ * Description: print number
+ */
+void print_num(int n)
+{
+	if (n / 10 == 0 && n % 10 == 0)
+	{
+		return;
+	}
+	else
+	{
+		print_num(n / 10);
+		_putchar(n % 10 + '0');
+	}
+}
+
