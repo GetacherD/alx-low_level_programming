@@ -13,7 +13,16 @@ int main(int __attribute__((unused)) argc, char **argv)
 
 	char ch;
 	int i;
-
+	if (argc != 2)
+	{
+		printf("Error\n");
+		exit(1);
+	}
+	if (argc < 0 )
+	{
+		printf("Error\n");
+		exit(2);
+	}
 	fp = fopen(__FILE__, "r");
 	if (fp == NULL)
 		return (-1);
