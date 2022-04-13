@@ -1,5 +1,3 @@
-#include "function_pointers.h"
-#include "3-calc.h"
 /**
  * op_add -add two nums
  * @a: first
