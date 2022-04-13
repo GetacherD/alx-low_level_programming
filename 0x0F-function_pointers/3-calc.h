@@ -2,7 +2,7 @@
 #define CALCH
 
 /**
- * struct opp - structure for ops type
+ * struct op - structure for ops type
  * @op: operatr
  * @f: associated function
  *
