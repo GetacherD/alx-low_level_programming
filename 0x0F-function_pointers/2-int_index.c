@@ -7,7 +7,7 @@
  *
  * Description: search for integer in array
  *
- * Return: integer 
+ * Return: integer
  */
 int int_index(int *array, int size, int (*cmp)(int))
 {
