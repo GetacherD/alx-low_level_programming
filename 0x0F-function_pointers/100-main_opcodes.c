@@ -24,10 +24,10 @@ int main(int __attribute__((unused)) argc, char **argv)
 		printf("Error\n");
 		return (0);
 	}
-	for (i = 0; i < atoi(argv[0]); i++)
+	for (i = 0; i < atoi(argv[1]); i++)
 	{
 		ch = *(unsigned char *)ptr;
-		printf("%x ", ch);
+		printf("%.2x ", ch);
 		ptr++;
 	}
 	printf("\n");
