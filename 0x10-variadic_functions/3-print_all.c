@@ -28,7 +28,6 @@ void print_all(const char *const format, ...)
 		{
 			ptr_print[j](args);
 		}
-		/*printf("\tj = %d \tformat[%d + 1] = %c\t\n", j, i, format[i + 1]);*/
 		i++;
 		if (j < 4 && format[i] != '\0')
 			printf(", ");
