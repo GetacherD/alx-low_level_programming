@@ -60,7 +60,10 @@ void print_s(va_list list)
  */
 void print_i(va_list list)
 {
-	printf("%d", va_arg(list, int));
+	int i;
+
+	i = va_arg(list, int);
+	printf("%d", i);
 }
 /**
  * print_f -print float
@@ -70,7 +73,10 @@ void print_i(va_list list)
  */
 void print_f(va_list list)
 {
-	printf("%f", va_arg(list, double));
+	float f;
+
+	f = va_arg(list, double);
+	printf("%f", f);
 }
 /**
  * print_c -print char
@@ -80,5 +86,9 @@ void print_f(va_list list)
  */
 void print_c(va_list list)
 {
-	printf("%c", va_arg(list, int));
+	char ch;
+
+	ch = va_arg(list, int);
+	printf("%c", ch);
 }
+
