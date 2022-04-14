@@ -66,10 +66,11 @@ void print_all(const char *const format, ...)
 		if (j < 4)
 		{
 			ptr_print[j](args);
-			printf(", ");
 		}
-		j = 0;
+		if (!((j < 4 && format[i + 1] == '\0') || j >= 4))
+			printf(", ");
 		i++;
+		j = 0;
 	}
 	printf("\n");
 }
