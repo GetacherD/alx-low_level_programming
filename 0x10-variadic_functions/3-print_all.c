@@ -55,7 +55,7 @@ void print_c(va_list list)
 void print_all(const char *const format, ...)
 {
 	char fmt[] = {'c', 'i', 'f', 's'};
-	int i, j;
+	unsigned int i, j;
 	va_list args;
 	void (*ptr_print[])(va_list) = {print_c, print_i, print_f, print_s};
 
@@ -69,10 +69,14 @@ void print_all(const char *const format, ...)
 		{
 			ptr_print[j](args);
 		}
-		/*printf("\tj = %d \tformat[%d + 1] = %c\t\n", j, i, format[i + 1]);*/
-		if (!((j < 4 && format[i + 1] == '\0') || j >= 4))
-			printf(", ");
+	/*	printf("\tj = %d \tformat[%d + 1] = %c\t\n", j, i, format[i + 1]);*/
 		i++;
+		if (j >= 4)
+		{
+		}
+		if (j < 4 && (format[i] == 'c' || format[i] == 'f' ||
+			format[i] == 's' || format[i] == 'i'))
+			printf(", ");
 		j = 0;
 	}
 	printf("\n");
