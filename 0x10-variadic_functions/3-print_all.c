@@ -25,9 +25,12 @@ void print_all(const char *const format, ...)
 		while (format[i] != fmt[j] && j < 4)
 			j++;
 		ptr_print[j](args);
+		if (j != 4 && format[i + 1] != '\0')
+			printf(", ");
 		j = 0;
 		i++;
 	}
+	printf("\n");
 }
 /**
  * print_s -print string
@@ -41,8 +44,8 @@ void print_s(va_list list)
 
 	s = va_arg(list, char *);
 	if (s == NULL)
-		printf("(nil)\n");
-	printf("%s\n", s);
+		printf("(nil)");
+	printf("%s", s);
 }
 /**
  * print_i -pprint integer
@@ -52,7 +55,7 @@ void print_s(va_list list)
  */
 void print_i(va_list list)
 {
-	printf("%d\n", va_arg(list, int));
+	printf("%d", va_arg(list, int));
 }
 /**
  * print_f -print float
@@ -62,7 +65,7 @@ void print_i(va_list list)
  */
 void print_f(va_list list)
 {
-	printf("%f\n", va_arg(list, double));
+	printf("%f", va_arg(list, double));
 }
 /**
  * print_c -print char
@@ -72,7 +75,7 @@ void print_f(va_list list)
  */
 void print_c(va_list list)
 {
-	printf("%c\n", va_arg(list, int));
+	printf("%c", va_arg(list, int));
 }
 /**
  * print_a -print nothing
