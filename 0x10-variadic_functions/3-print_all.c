@@ -63,12 +63,13 @@ void print_all(const char *const format, ...)
 	i = j = 0;
 	while (format[i] != '\0')
 	{
-		while ((format[i] != fmt[j]))
+		while ((format[i] != fmt[j]) && j < 4)
 			j++;
 		if (j < 4)
 		{
 			ptr_print[j](args);
 		}
+		/*printf("\tj = %d \tformat[%d + 1] = %c\t\n", j, i, format[i + 1]);*/
 		if (!((j < 4 && format[i + 1] == '\0') || j >= 4))
 			printf(", ");
 		i++;
