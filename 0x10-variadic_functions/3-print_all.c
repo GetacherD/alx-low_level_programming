@@ -3,7 +3,6 @@ void print_s(va_list list);
 void print_i(va_list list);
 void print_f(va_list list);
 void print_c(va_list list);
-void print_all(const char *const format, ...);
 /**
  * print_all -print every thing
  * @format: format string
