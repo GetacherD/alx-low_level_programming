@@ -20,6 +20,8 @@ void print_all(const char *const format, ...)
 	va_start(args, format);
 	i = j = 0;
 	sep = "";
+	if (format == NULL)
+		return;
 	while (format[i] != '\0')
 	{
 		while (j < 4 && (format[i] != fmt[j]))
