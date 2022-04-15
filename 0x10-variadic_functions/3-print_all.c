@@ -21,24 +21,27 @@ void print_all(const char *const format, ...)
 	char *sep;
 	ptr_print ptr = {print_c, print_i, print_f, print_s};
 
-	va_start(args, format);
-	i = j = 0;
-	sep = "";
-	while ((*(format + i)) && format)
+	if (format != NULL)
 	{
-		while (j < 4 && (*(format + i) != fmt[j]))
-			j++;
-		if (j < 4)
+		va_start(args, format);
+		i = j = 0;
+		sep = "";
+		while ((*(format + i)))
 		{
-			printf("%s", sep);
-			ptr[j](args);
-			sep = ", ";
+			while (j < 4 && (*(format + i) != fmt[j]))
+				j++;
+			if (j < 4)
+			{
+				printf("%s", sep);
+				ptr[j](args);
+				sep = ", ";
+			}
+			i++;
+			j = 0;
 		}
-		i++;
-		j = 0;
+		printf("\n");
+		va_end(args);
 	}
-	printf("\n");
-	va_end(args);
 }
 /**
  * print_s -print string
