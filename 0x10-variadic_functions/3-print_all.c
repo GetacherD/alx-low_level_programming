@@ -1,6 +1,7 @@
 #include "variadic_functions.h"
 #include <stdio.h>
 #include <stdarg.h>
+#include <stdlib.h>
 void print_s(va_list list);
 void print_i(va_list list);
 void print_f(va_list list);
@@ -20,12 +21,14 @@ void print_all(const char *const format, ...)
 	char *sep;
 	ptr_print ptr = {print_c, print_i, print_f, print_s};
 
+	if (format == NULL)
+		return;
 	va_start(args, format);
 	i = j = 0;
 	sep = "";
-	while (format[i] != '\0')
+	while ((*(format + i)))
 	{
-		while (j < 4 && (format[i] != fmt[j]))
+		while (j < 4 && (*(format + i) != fmt[j]))
 			j++;
 		if (j < 4)
 		{
@@ -51,7 +54,10 @@ void print_s(va_list list)
 
 	s = va_arg(list, char *);
 	if (s == NULL)
+	{
 		printf("(nil)");
+		return;
+	}
 	printf("%s", s);
 }
 /**
