@@ -17,11 +17,13 @@ void print_all(const char *const format, ...)
 	char *sep;
 	ptr_print ptr = {print_c, print_i, print_f, print_s};
 
+	if (format == NULL)
+	{
+		return;
+	}
 	va_start(args, format);
 	i = j = 0;
 	sep = "";
-	if (format == NULL)
-		return;
 	while (format[i] != '\0')
 	{
 		while (j < 4 && (format[i] != fmt[j]))
@@ -92,4 +94,3 @@ void print_c(va_list list)
 	ch = va_arg(list, int);
 	printf("%c", ch);
 }
-
