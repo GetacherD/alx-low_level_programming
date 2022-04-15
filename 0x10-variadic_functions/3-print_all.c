@@ -18,7 +18,7 @@ void print_all(const char *const format, ...)
 	unsigned int i, j;
 	va_list args;
 	char *sep = "";
-	void (*ptr_print[])(va_list) = {print_c, print_i, print_f, print_s};
+	ptr_print ptr = {print_c, print_i, print_f, print_s};
 
 	va_start(args, format);
 	i = j = 0;
@@ -29,7 +29,7 @@ void print_all(const char *const format, ...)
 		if (j < 4)
 		{
 			printf("%s", sep);
-			ptr_print[j](args);
+			ptr[j](args);
 			sep = ", ";
 		}
 		i++;
