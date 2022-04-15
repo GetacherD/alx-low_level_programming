@@ -12,16 +12,11 @@ void print_c(va_list list);
 void print_all(const char *const format, ...)
 {
 	char fmt[] = {'c', 'i', 'f', 's'};
-	unsigned int i, j;
+	int i, j;
 	va_list args;
 	char *sep;
 	ptr_print ptr = {print_c, print_i, print_f, print_s};
 
-	if (format == NULL)
-	{
-		printf("%c",'\0');
-		return;
-	}
 	va_start(args, format);
 	i = j = 0;
 	sep = "";
