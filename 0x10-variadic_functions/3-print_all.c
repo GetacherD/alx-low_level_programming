@@ -1,4 +1,6 @@
 #include "variadic_functions.h"
+#include <stdio.h>
+#include <stdarg.h>
 void print_s(va_list list);
 void print_i(va_list list);
 void print_f(va_list list);
@@ -17,6 +19,8 @@ void print_all(const char *const format, ...)
 	char *sep;
 	ptr_print ptr = {print_c, print_i, print_f, print_s};
 
+	if (format == NULL)
+		return;
 	va_start(args, format);
 	i = j = 0;
 	sep = "";
