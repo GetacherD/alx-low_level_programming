@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 void _putchar(char s);
-void fun_before() __attribute__((constructor));
+void fun_before(void) __attribute__((constructor));
 /**
  * struct list_s - singly linked list
  * @str: string - (malloc'ed string)
