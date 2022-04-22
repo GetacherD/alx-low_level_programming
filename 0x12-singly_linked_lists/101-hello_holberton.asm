@@ -5,8 +5,8 @@ section .text
 main:
    push rbp
 
-   mov rdi,format
-   mov rsi,message
+   mov rdx,format
+   mov rcx,message
    mov rax,0
    call printf
 
