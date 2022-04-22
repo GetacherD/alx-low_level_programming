@@ -1,15 +1,16 @@
-global _start
+global main
+extern printf
 
-section .text
-_start:
-	mov rsi, msg
-	mov rax, 1
-	mov rdi, 1
-	mov rdx, len
-	syscall
-	mov rax, 0x3c
-	xor rdi, rdi
-	syscall
 section .data
-msg: db "Hello, Holberton", 10
-len equ $ -msg
+	msg db "Hello, Holberton", 0x0A, 0x00
+	len equ $ -msg
+main:
+	push rbp
+	mov rbp, rsp
+	push len
+	push msg
+	call printf
+	mov rax , 0
+	mov rsp ,rbp
+	pop rbp
+	ret
