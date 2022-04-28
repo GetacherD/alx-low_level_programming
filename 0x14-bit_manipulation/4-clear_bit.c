@@ -8,10 +8,13 @@
  */
 int clear_bit(unsigned long int *n, unsigned int index)
 {
-	unsigned long int or = 0x01 << index;
+	unsigned long int or = 1;
 
 	if (n == NULL)
 		return (-1);
+	if (index > 32)
+		return (-1);
+	or = or << index;
 	or = ~or;
 	*n = (*n) & or;
 
