@@ -8,15 +8,22 @@
  */
 int get_bit(unsigned long int n, unsigned int index)
 {
-	unsigned int i = 0;
+	unsigned long int or = 1;
 
+	or = or << index;
+	if (index > 32)
+		return (-1);
+
+	n = n & or;
 	while (n != 0)
 	{
-		if (i == index)
-			return ((unsigned int)(n - (n >> 1) * 2));
+		if ((n >> 1) == 0)
+			return (n);
 		n = n >> 1;
-		i++;
 	}
-	return (-1);
+
+
+	return (0);
+
 }
 
