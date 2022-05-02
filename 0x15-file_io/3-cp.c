@@ -62,7 +62,7 @@ int main(int argc, char **argv)
 			free(buf);
 			exit(98);
 		}
-		w = write(fdr, buf, 1024);
+		w = write(fdr, buf, r);
 		if (w == -1 || fdr == -1)
 		{
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
