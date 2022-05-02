@@ -73,5 +73,5 @@ int main(int argc, char **argv)
 	free(buf);
 	closeFile(fd);
 	closeFile(fdr);
-	return (1);
+	return (0);
 }
