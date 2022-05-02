@@ -27,24 +27,28 @@ int main(int argc, char **argv)
 	cur = lseek((int)fd, 0, SEEK_CUR);
 	end = lseek((int)fd, 0, SEEK_END);
 	len = (end - cur);
-	buf = malloc(sizeof(char) * len);
+	buf = malloc(sizeof(char) * 1024);
 	lseek((int)fd, -len, SEEK_CUR);
 	if (buf == NULL)
 		return (-1);
-	r = read((int)fd, buf, len);
-	if (r == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-		free(buf);
-		exit(98);
-	}
 	fdr = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
-	w = (int)write((int)fdr, buf, len);
-	if (w == -1 || (int)fdr == -1)
+	while (lseek((int)fd, 0, SEEK_CUR) != end)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-		free(buf);
-		exit(99);
+
+		r = read((int)fd, buf, 1024);
+		if (r == -1)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+			free(buf);
+			exit(98);
+		}
+		w = (int)write((int)fdr, buf, 1024);
+		if (w == -1 || (int)fdr == -1)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+			free(buf);
+			exit(99);
+		}
 	}
 	if (close((int)fdr) == -1)
 	{
