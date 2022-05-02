@@ -20,8 +20,15 @@ int create_file(const char *filename, char *text_content)
 		close(fd);
 		return (-1);
 	}
-	while (text_content[index])
-		index++;
+	if (text_content == NULL)
+	{
+		index = 0;
+	}
+	else
+	{
+		while (text_content[index])
+			index++;
+	}
 	w = write(fd, text_content, index);
 	if (w == -1)
 	{
