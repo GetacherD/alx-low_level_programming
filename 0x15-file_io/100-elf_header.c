@@ -3,7 +3,7 @@
 void print_TYPE(uint16_t type, unsigned char *e_id);
 void print_header(unsigned char *e_id);
 void print_OSABI(unsigned char c);
-void check_elf(char *buf);
+void check_elf(unsigned char *e_id);
 void print_CLASS(unsigned char c);
 void print_version(unsigned char c);
 void print_DATA(unsigned char c);
@@ -43,9 +43,9 @@ int main(int __attribute__((unused)) argc, char **argv)
 		dprintf(STDERR_FILENO, "Error: reading file%s\n", argv[1]);
 		exit(98);
 	}
-	check_elf(buf);
 	hdr = (Elf64_Ehdr *)buf;
 	e_id = (unsigned char *)buf;
+	check_elf(e_id);
 	print_header(e_id);
 	print_CLASS(e_id[EI_CLASS]);
 	print_DATA(e_id[EI_DATA]);
@@ -91,7 +91,7 @@ void print_entry(unsigned long int ent, unsigned char *e_id)
 		B = C | B;
 		A = A << 8;
 		ent = A | B;
-		printf("  Entry point address:               %#x\n", (unsigned int)ent);
+		printf("  Entry point address:               %#lx\n", ent);
 	}
 	else
 	{
@@ -139,22 +139,22 @@ void print_header(unsigned char *e_id)
 
 	printf("ELF Header:\n");
 	printf("  Magic:   ");
-	printf("%.2x ", e_id[EI_MAG0]);
-	printf("%.2x ", e_id[EI_MAG1]);
-	printf("%.2x ", e_id[EI_MAG2]);
-	printf("%.2x ", e_id[EI_MAG3]);
-	printf("%.2x ", e_id[EI_CLASS]);
-	printf("%.2x ", e_id[EI_DATA]);
-	printf("%.2x ", e_id[EI_VERSION]);
-	printf("%.2x ", e_id[EI_OSABI]);
-	printf("%.2x ", e_id[EI_ABIVERSION]);
-	printf("%.2x ", e_id[EI_PAD]);
-	printf("%.2x ", e_id[EI_PAD]);
-	printf("%.2x ", e_id[EI_PAD]);
-	printf("%.2x ", e_id[EI_PAD]);
-	printf("%.2x ", e_id[EI_PAD]);
-	printf("%.2x ", e_id[EI_PAD]);
-	printf("%.2x\n", e_id[EI_PAD]);
+	printf("%02x ", e_id[EI_MAG0]);
+	printf("%02x ", e_id[EI_MAG1]);
+	printf("%02x ", e_id[EI_MAG2]);
+	printf("%02x ", e_id[EI_MAG3]);
+	printf("%02x ", e_id[EI_CLASS]);
+	printf("%02x ", e_id[EI_DATA]);
+	printf("%02x ", e_id[EI_VERSION]);
+	printf("%02x ", e_id[EI_OSABI]);
+	printf("%02x ", e_id[EI_ABIVERSION]);
+	printf("%02x ", e_id[EI_PAD]);
+	printf("%02x ", e_id[EI_PAD]);
+	printf("%02x ", e_id[EI_PAD]);
+	printf("%02x ", e_id[EI_PAD]);
+	printf("%02x ", e_id[EI_PAD]);
+	printf("%02x ", e_id[EI_PAD]);
+	printf("%02x\n", e_id[EI_PAD]);
 }
 /**
 * print_CLASS - print class
@@ -247,11 +247,12 @@ void print_OSABI(unsigned char c)
 }
 /**
 * check_elf - chek if file is elf
-* @buf: buffer of file
+* @e_id: buffer of file
 */
-void check_elf(char *buf)
+void check_elf(unsigned char *e_id)
 {
-	if (!(buf[0] == 0x7f && buf[1] == 'E' && buf[2] == 'L' && buf[3] == 'F'))
+	if (!(e_id[EI_MAG0] == 0x7f && e_id[EI_MAG1] == 'E' &&
+		e_id[EI_MAG2] == 'L' && e_id[EI_MAG3] == 'F'))
 	{
 		dprintf(STDERR_FILENO, "Error: Not an ELF file\n");
 		exit(98);
