@@ -17,20 +17,27 @@ int main(int __attribute__((unused)) argc, char **argv)
 {
 	int fd, c;
 	ssize_t r;
-	char buf[1024];
+	char *buf;
 	unsigned char *e_id;
 	Elf64_Ehdr *hdr;
 
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
 	{
-		dprintf(STDERR_FILENO, "Error Opening File\n");
+		dprintf(STDERR_FILENO, "Error: can not open file %s\n", argv[1]);
 		exit(98);
 	}
-	r = read(fd, buf, 1024);
+	buf = malloc(sizeof(Elf64_Ehdr));
+	if (buf == NULL)
+	{
+		close(fd);
+		dprintf(STDERR_FILENO, "Error: can not read file %s\n", argv[1]);
+		exit(98);
+	}
+	r = read(fd, buf, sizeof(Elf64_Ehdr) / sizeof(char));
 	if (r == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: reading file\n");
+		dprintf(STDERR_FILENO, "Error: reading file%s\n", argv[1]);
 		exit(98);
 	}
 	check_elf(buf);
