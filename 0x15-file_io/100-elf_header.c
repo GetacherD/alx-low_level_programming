@@ -51,7 +51,7 @@ int main(int __attribute__((unused)) argc, char **argv)
 	print_DATA(e_id[EI_DATA]);
 	print_version(e_id[EI_VERSION]);
 	print_OSABI(e_id[EI_OSABI]);
-	printf("\n  ABI Version:                       %u", e_id[EI_ABIVERSION]);
+	printf("  ABI Version:                       %u\n", e_id[EI_ABIVERSION]);
 	print_TYPE(hdr->e_type, e_id);
 	print_entry(hdr->e_entry, e_id);
 	c = close(fd);
@@ -91,11 +91,11 @@ void print_entry(unsigned long int ent, unsigned char *e_id)
 		B = C | B;
 		A = A << 8;
 		ent = A | B;
-		printf("\n  Entry point address:               0x%lx\n", ent);
+		printf("  Entry point address:               0x%lx\n", ent);
 	}
 	else
 	{
-		printf("\n  Entry point address:               0x%lx\n", ent);
+		printf("  Entry point address:               0x%lx\n", ent);
 	}
 }
 /**
@@ -107,26 +107,26 @@ void print_TYPE(uint16_t type, unsigned char *e_id)
 {
 	if (e_id[EI_DATA] == ELFDATA2MSB)
 		type = type >> 8;
-	printf("\n  Type:                              ");
+	printf("  Type:                              ");
 	switch (type)
 	{
 		case ET_REL:
-			printf("REL (Relocatable file)");
+			printf("REL (Relocatable file)\n");
 			break;
 		case ET_EXEC:
-			printf("EXEC (Executable file)");
+			printf("EXEC (Executable file)\n");
 			break;
 		case ET_DYN:
-			printf("DYN (Shared object file)");
+			printf("DYN (Shared object file)\n");
 			break;
 		case ET_CORE:
-			printf("CORE (Core file)");
+			printf("CORE (Core file)\n");
 			break;
 		case ET_NONE:
-			printf("NONE (None)");
+			printf("NONE (None)\n");
 			break;
 		default:
-			printf("<unknown: %x>", type);
+			printf("<unknown: %x>\n", type);
 			break;
 	}
 }
@@ -154,7 +154,7 @@ void print_header(unsigned char *e_id)
 	printf("%.2x ", e_id[EI_PAD]);
 	printf("%.2x ", e_id[EI_PAD]);
 	printf("%.2x ", e_id[EI_PAD]);
-	printf("%.2x", e_id[EI_PAD]);
+	printf("%.2x\n", e_id[EI_PAD]);
 }
 /**
 * print_CLASS - print class
@@ -162,16 +162,16 @@ void print_header(unsigned char *e_id)
 */
 void print_CLASS(unsigned char c)
 {
-	printf("\n  Class:                             ");
+	printf("  Class:                             ");
 
 	if (c == ELFCLASS32)
-		printf("ELF32");
+		printf("ELF32\n");
 	else if (c == ELFCLASS64)
-		printf("ELF64");
+		printf("ELF64\n");
 	else if (c == ELFCLASSNONE)
-		printf("none");
+		printf("none\n");
 	else
-		printf("<unknown: %x>", c);
+		printf("<unknown: %x>\n", c);
 }
 /**
 * print_DATA- prints data
@@ -179,15 +179,15 @@ void print_CLASS(unsigned char c)
 */
 void print_DATA(unsigned char c)
 {
-	printf("\n  Data:                              ");
+	printf("  Data:                              ");
 	if (c == ELFDATA2LSB)
-		printf("Two's complement, little-endian");
+		printf("Two's complement, little-endian\n");
 	else if (c == ELFDATA2MSB)
-		printf("Two's complement, big-endian");
+		printf("Two's complement, big-endian\n");
 	else if (c == ELFDATANONE)
-		printf("none");
+		printf("none\n");
 	else
-		printf("unknown: %x>", c);
+		printf("unknown: %x>\n", c);
 }
 /**
 * print_version - print version
@@ -195,9 +195,11 @@ void print_DATA(unsigned char c)
 */
 void print_version(unsigned char c)
 {
-	printf("\n  Version:                           %u", c);
+	printf("  Version:                           %u", c);
 	if (c == EV_CURRENT)
-		printf(" (current)");
+		printf(" (current)\n");
+	else
+		printf("\n");
 }
 /**
 * print_OSABI - print OSABI
@@ -205,41 +207,41 @@ void print_version(unsigned char c)
 */
 void print_OSABI(unsigned char c)
 {
-	printf("\n  OS/ABI:                            ");
+	printf("  OS/ABI:                            ");
 	switch (c)
 	{
 		case ELFOSABI_SYSV:
-			printf("UNIX - System V");
+			printf("UNIX - System V\n");
 			break;
 		case ELFOSABI_HPUX:
-			printf("UNIX - HP-UX");
+			printf("UNIX - HP-UX\n");
 			break;
 		case ELFOSABI_NETBSD:
-			printf("UNIX - NetBSD");
+			printf("UNIX - NetBSD\n");
 			break;
 		case ELFOSABI_LINUX:
-			printf("UNIX - Linux");
+			printf("UNIX - Linux\n");
 			break;
 		case ELFOSABI_SOLARIS:
-			printf("UNIX - Solaris");
+			printf("UNIX - Solaris\n");
 			break;
 		case ELFOSABI_IRIX:
-			printf("UNIX - IRIX");
+			printf("UNIX - IRIX\n");
 			break;
 		case ELFOSABI_FREEBSD:
-			printf("UNXI - FreeBSD");
+			printf("UNXI - FreeBSD\n");
 			break;
 		case ELFOSABI_TRU64:
-			printf("UNIX - TRU64");
+			printf("UNIX - TRU64\n");
 			break;
 		case ELFOSABI_ARM:
-			printf("ARM");
+			printf("ARM\n");
 			break;
 		case ELFOSABI_STANDALONE:
-			printf("Standalone App");
+			printf("Standalone App\n");
 			break;
 		default:
-			printf("<unknown: %x>", c);
+			printf("<unknown: %x>\n", c);
 			break;
 	}
 }
