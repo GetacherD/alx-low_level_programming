@@ -83,12 +83,12 @@ void print_entry(unsigned long int ent, unsigned char *e_id)
 		C = 0xFF000000;
 		C = C & A;
 		C = C >> 16;
-		B = B & C;
+		B = B | C;
 		A = A << 8;
 		C = 0xFF000000;
 		C = C & A;
 		C = C >> 8;
-		B = C & B;
+		B = C | B;
 		A = A << 8;
 		ent = A | B;
 		printf("\n Entry point address:               0x%lx\n", ent);
