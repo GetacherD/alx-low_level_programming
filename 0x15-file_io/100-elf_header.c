@@ -1,12 +1,13 @@
 #include <elf.h>
 #include "main.h"
-void print_TYPE(uint16_t type);
+void print_TYPE(uint16_t type, unsigned char *e_id);
 void print_header(unsigned char *e_id);
 void print_OSABI(unsigned char c);
 void check_elf(char *buf);
 void print_CLASS(unsigned char c);
 void print_version(unsigned char c);
 void print_DATA(unsigned char c);
+void print_entry(unsigned long int ent, unsigned char *e_id);
 /**
 * main - entry point
 * @argc: number of argumnets
@@ -51,8 +52,8 @@ int main(int __attribute__((unused)) argc, char **argv)
 	print_version(e_id[EI_VERSION]);
 	print_OSABI(e_id[EI_OSABI]);
 	printf("\n ABI Version:                       %u", e_id[EI_ABIVERSION]);
-	print_TYPE(hdr->e_type);
-	printf("\n Entry point address:               0x%lx\n", hdr->e_entry);
+	print_TYPE(hdr->e_type, e_id);
+	print_entry(hdr->e_entry, e_id);
 	c = close(fd);
 	if (c == -1)
 	{
@@ -64,11 +65,48 @@ int main(int __attribute__((unused)) argc, char **argv)
 	return (0);
 }
 /**
+* print_entry -print entry point
+* @ent: entry point
+* @e_id: e_id
+*/
+void print_entry(unsigned long int ent, unsigned char *e_id)
+{
+	unsigned long int A, B, C;
+
+	if (e_id[EI_DATA] == ELFDATA2MSB)
+	{
+		A = ent;
+		B = 0xFF000000;
+		B = B & A;
+		B = B >> 24;
+		A = A << 8;
+		C = 0xFF000000;
+		C = C & A;
+		C = C >> 16;
+		B = B & C;
+		A = A << 8;
+		C = 0xFF000000;
+		C = C & A;
+		C = C >> 8;
+		B = C & B;
+		A = A << 8;
+		ent = A;
+		printf("\n Entry point address:               0x%lx\n", ent);
+	}
+	else
+	{
+		printf("\n Entry point address:               0x%lx\n", ent);
+	}
+}
+/**
 * print_TYPE - print type of file
 * @type: type indicator
+* @e_id: e_id
 */
-void print_TYPE(uint16_t type)
+void print_TYPE(uint16_t type, unsigned char *e_id)
 {
+	if (e_id[EI_DATA] == ELFDATA2MSB)
+		type = type >> 8;
 	printf("\n Type:                              ");
 	switch (type)
 	{
