@@ -37,6 +37,8 @@ int main(int __attribute__((unused)) argc, char **argv)
 	r = read(fd, buf, sizeof(Elf64_Ehdr) / sizeof(char));
 	if (r == -1)
 	{
+		free(buf);
+		close(fd);
 		dprintf(STDERR_FILENO, "Error: reading file%s\n", argv[1]);
 		exit(98);
 	}
@@ -54,10 +56,11 @@ int main(int __attribute__((unused)) argc, char **argv)
 	c = close(fd);
 	if (c == -1)
 	{
+		free(buf);
 		dprintf(STDERR_FILENO, "Error: Closing file %d", fd);
 		exit(98);
 	}
-
+	free(buf);
 	return (0);
 }
 /**
