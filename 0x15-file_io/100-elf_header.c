@@ -91,11 +91,11 @@ void print_entry(unsigned long int ent, unsigned char *e_id)
 		B = C | B;
 		A = A << 8;
 		ent = A | B;
-		printf("  Entry point address:               0x%lx\n", ent);
+		printf("  Entry point address:               %#x\n", (unsigned int)ent);
 	}
 	else
 	{
-		printf("  Entry point address:               0x%lx\n", ent);
+		printf("  Entry point address:               %#lx\n", ent);
 	}
 }
 /**
