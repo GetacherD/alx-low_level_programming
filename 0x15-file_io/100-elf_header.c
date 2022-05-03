@@ -51,7 +51,7 @@ int main(int __attribute__((unused)) argc, char **argv)
 	print_DATA(e_id[EI_DATA]);
 	print_version(e_id[EI_VERSION]);
 	print_OSABI(e_id[EI_OSABI]);
-	printf("\n ABI Version:                       %u", e_id[EI_ABIVERSION]);
+	printf("\n  ABI Version:                       %u", e_id[EI_ABIVERSION]);
 	print_TYPE(hdr->e_type, e_id);
 	print_entry(hdr->e_entry, e_id);
 	c = close(fd);
@@ -91,11 +91,11 @@ void print_entry(unsigned long int ent, unsigned char *e_id)
 		B = C | B;
 		A = A << 8;
 		ent = A | B;
-		printf("\n Entry point address:               0x%lx\n", ent);
+		printf("\n  Entry point address:               0x%lx\n", ent);
 	}
 	else
 	{
-		printf("\n Entry point address:               0x%lx\n", ent);
+		printf("\n  Entry point address:               0x%lx\n", ent);
 	}
 }
 /**
@@ -107,7 +107,7 @@ void print_TYPE(uint16_t type, unsigned char *e_id)
 {
 	if (e_id[EI_DATA] == ELFDATA2MSB)
 		type = type >> 8;
-	printf("\n Type:                              ");
+	printf("\n  Type:                              ");
 	switch (type)
 	{
 		case ET_REL:
@@ -137,7 +137,8 @@ void print_TYPE(uint16_t type, unsigned char *e_id)
 void print_header(unsigned char *e_id)
 {
 
-	printf("ELF Header:\n  Magic:   ");
+	printf("ELF Header:\n");
+	printf("  Magic:   ");
 	printf("%.2x ", e_id[EI_MAG0]);
 	printf("%.2x ", e_id[EI_MAG1]);
 	printf("%.2x ", e_id[EI_MAG2]);
