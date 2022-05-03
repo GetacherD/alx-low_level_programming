@@ -115,7 +115,7 @@ void print_header(unsigned char *e_id)
 	printf("%.2x ", e_id[EI_PAD]);
 	printf("%.2x ", e_id[EI_PAD]);
 	printf("%.2x ", e_id[EI_PAD]);
-	printf("%.2x ", e_id[EI_PAD]);
+	printf("%.2x", e_id[EI_PAD]);
 }
 /**
 * print_CLASS - print class
@@ -173,34 +173,34 @@ void print_OSABI(unsigned char c)
 			printf("UNIX - System V");
 			break;
 		case ELFOSABI_HPUX:
-			printf("HP-UX ABI");
+			printf("UNIX - HP-UX");
 			break;
 		case ELFOSABI_NETBSD:
-			printf("NetBSD ABI");
+			printf("UNIX - NetBSD");
 			break;
 		case ELFOSABI_LINUX:
-			printf("Linux ABI");
+			printf("UNIX - Linux");
 			break;
 		case ELFOSABI_SOLARIS:
-			printf("Solaris ABI");
+			printf("UNIX - Solaris");
 			break;
 		case ELFOSABI_IRIX:
-			printf("IRIX ABI");
+			printf("UNIX - IRIX");
 			break;
 		case ELFOSABI_FREEBSD:
-			printf("FreeBSD ABI");
+			printf("UNXI - FreeBSD");
 			break;
 		case ELFOSABI_TRU64:
-			printf("TRU64 UNIX ABI");
+			printf("UNIX - TRU64");
 			break;
 		case ELFOSABI_ARM:
-			printf("ARM architecture ABI");
+			printf("ARM");
 			break;
 		case ELFOSABI_STANDALONE:
-			printf("Stand-alone (embedded) ABI");
+			printf("Standalone App");
 			break;
 		default:
-			printf("UNIX System V ABI");
+			printf("<unknown: %x>", c);
 			break;
 	}
 }
@@ -210,9 +210,9 @@ void print_OSABI(unsigned char c)
 */
 void check_elf(char *buf)
 {
-	if (buf[0] != 0x7f || buf[1] != 'E' || buf[2] != 'L' || buf[3] != 'F')
+	if (!(buf[0] == 0x7f && buf[1] == 'E' && buf[2] == 'L' && buf[3] == 'F'))
 	{
-		dprintf(STDERR_FILENO, "NOT ELF FILE\n");
+		dprintf(STDERR_FILENO, "Error: Not an ELF file\n");
 		exit(98);
 	}
 }
