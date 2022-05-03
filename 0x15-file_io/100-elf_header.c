@@ -137,7 +137,7 @@ void print_TYPE(uint16_t type, unsigned char *e_id)
 void print_header(unsigned char *e_id)
 {
 
-	printf("ELF Header:\n Magic:   ");
+	printf("ELF Header:\n  Magic:   ");
 	printf("%.2x ", e_id[EI_MAG0]);
 	printf("%.2x ", e_id[EI_MAG1]);
 	printf("%.2x ", e_id[EI_MAG2]);
@@ -161,7 +161,7 @@ void print_header(unsigned char *e_id)
 */
 void print_CLASS(unsigned char c)
 {
-	printf("\n Class:                             ");
+	printf("\n  Class:                             ");
 
 	if (c == ELFCLASS32)
 		printf("ELF32");
@@ -178,7 +178,7 @@ void print_CLASS(unsigned char c)
 */
 void print_DATA(unsigned char c)
 {
-	printf("\n Data:                              ");
+	printf("\n  Data:                              ");
 	if (c == ELFDATA2LSB)
 		printf("Two's complement, little-endian");
 	else if (c == ELFDATA2MSB)
@@ -194,7 +194,7 @@ void print_DATA(unsigned char c)
 */
 void print_version(unsigned char c)
 {
-	printf("\n Version:                           %u", c);
+	printf("\n  Version:                           %u", c);
 	if (c == EV_CURRENT)
 		printf(" (current)");
 }
@@ -204,7 +204,7 @@ void print_version(unsigned char c)
 */
 void print_OSABI(unsigned char c)
 {
-	printf("\n OS/ABI:                            ");
+	printf("\n  OS/ABI:                            ");
 	switch (c)
 	{
 		case ELFOSABI_SYSV:
