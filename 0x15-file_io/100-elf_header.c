@@ -90,7 +90,7 @@ void print_entry(unsigned long int ent, unsigned char *e_id)
 		C = C >> 8;
 		B = C & B;
 		A = A << 8;
-		ent = A;
+		ent = A | B;
 		printf("\n Entry point address:               0x%lx\n", ent);
 	}
 	else
