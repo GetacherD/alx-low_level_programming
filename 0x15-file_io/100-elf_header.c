@@ -13,10 +13,10 @@ void print_DATA(unsigned char c);
 * @argv: args vector
 * Return: 0 is success else -1
 */
-int main(int argc, char **argv)
+int main(int __attribute__((unused)) argc, char **argv)
 {
 	int fd, c;
-	ssize_t w, r;
+	ssize_t r;
 	char buf[1024];
 	unsigned char *e_id;
 	Elf64_Ehdr *hdr;
