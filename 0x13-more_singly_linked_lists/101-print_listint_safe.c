@@ -1,7 +1,7 @@
 #include "lists.h"
 /**
 * base_16 - print num in base 16
-* @n: decimal num
+* @n: decimal number
 */
 void base_16(unsigned long int n)
 {
