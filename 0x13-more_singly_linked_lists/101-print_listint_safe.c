@@ -66,7 +66,6 @@ void __exit(unsigned int n, int y)
 	_putchar('>');
 	_putchar(' ');
 	print_hex(n, y);
-	exit(98);
 }
 
 /**
@@ -85,7 +84,7 @@ size_t print_listint_safe(const listint_t *head)
 	for (i = 0; i < 1024; i++)
 		buf[i] = NULL;
 	if (head == NULL)
-		exit(98);
+		return (0);
 	n = (unsigned long int)(void *)head;
 	print_hex(n, head->n);
 	i = 0;
@@ -94,7 +93,7 @@ size_t print_listint_safe(const listint_t *head)
 	{
 		n = (unsigned long int)(void *)head;
 		print_hex(n, head->n);
-		exit(98);
+		return (1);
 	}
 	Nodes++;
 	buf[i] = cur;
@@ -108,6 +107,7 @@ size_t print_listint_safe(const listint_t *head)
 			{
 				n = (unsigned long int)(void *)cur;
 				__exit(n, cur->n);
+				return (Nodes);
 			}
 		i++;
 		buf[i] = cur;
