@@ -78,13 +78,13 @@ size_t print_listint_safe(const listint_t *head)
 	size_t Nodes = 0;
 	listint_t *first, *second;
 
-	printf("[%p] %d\n", (void *)head, head->n);
+	print_hex((unsigned long int)head, head->n);
 	first = head->next;
 	second = head->next;
 
 	if (first == head)
 	{
-		printf("-> [%p] %d\n", (void *)first, first->n);
+		print_hex((unsigned long int)first, first->n);
 		return (1);
 	}
 	Nodes++;
@@ -92,19 +92,24 @@ size_t print_listint_safe(const listint_t *head)
 	{
 		if (first == first->next)
 		{
-			printf("-> [%p] %d\n", (void *)first, first->n);
+			_putchar('-');
+			_putchar('>');
+			print_hex((unsigned long int)first, first->n);
 			return (Nodes);
 		}
 		while (second != first)
 		{
 			if (second == first->next)
 			{
-				printf("-> [%p] %d\n", (void *)second, second->n);
+				print_hex((unsigned long int)first, first->n);
+				_putchar('-');
+				_putchar('>');
+				print_hex((unsigned long int)second, second->n);
 				return (Nodes);
 			}
 			second = second->next;
 		}
-		printf("[%p] %d\n", (void *)first, first->n);
+		print_hex((unsigned long int)first, first->n);
 		second = head->next;
 		first = first->next;
 		Nodes++;
