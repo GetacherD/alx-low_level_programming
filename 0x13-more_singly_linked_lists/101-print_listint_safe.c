@@ -76,42 +76,38 @@ void __exit(unsigned int n, int y)
 size_t print_listint_safe(const listint_t *head)
 {
 	size_t Nodes = 0;
-	listint_t *cur;
-	int i = 0, j = 0;
-	unsigned long int n;
-	listint_t *buf[1024];
+	listint_t *first, *second;
 
-	for (i = 0; i < 1024; i++)
-		buf[i] = NULL;
-	if (head == NULL)
-		return (0);
-	n = (unsigned long int)(void *)head;
-	print_hex(n, head->n);
-	i = 0;
-	cur = head->next;
-	if (cur == head)
+	printf("[%p] %d\n", (void *)head, head->n);
+	first = head->next;
+	second = head->next;
+
+	if (first == head)
 	{
-		n = (unsigned long int)(void *)head;
-		print_hex(n, head->n);
+		printf("-> [%p] %d\n", (void *)first, first->n);
 		return (1);
 	}
 	Nodes++;
-	buf[i] = cur;
-	while (cur)
+	while (first)
 	{
-		n = (unsigned long int)(void *)cur;
-		print_hex(n, cur->n);
-		cur = cur->next;
-		for (j = 0; j <= i; j++)
-			if (buf[j] == cur)
+		if (first == first->next)
+		{
+			printf("-> [%p] %d\n", (void *)first, first->n);
+			return (Nodes);
+		}
+		while (second != first)
+		{
+			if (second == first->next)
 			{
-				n = (unsigned long int)(void *)cur;
-				__exit(n, cur->n);
+				printf("-> [%p] %d\n", (void *)second, second->n);
 				return (Nodes);
 			}
-		i++;
-		buf[i] = cur;
+			second = second->next;
+		}
+		printf("[%p] %d\n", (void *)first, first->n);
+		second = head->next;
+		first = first->next;
 		Nodes++;
 	}
-	return (Nodes);
+	return (Nodes - 1);
 }
