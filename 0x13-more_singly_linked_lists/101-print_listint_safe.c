@@ -1,118 +1,88 @@
 #include "lists.h"
+#include <stdio.h>
+
+size_t looped_listint_len(const listint_t *head);
+size_t print_listint_safe(const listint_t *head);
+
 /**
-* base_16 - print num in base 16
-* @n: decimal number
-*/
-void base_16(unsigned long int n)
+ * looped_listint_len - Counts the number of unique nodes
+ *                      in a looped listint_t linked list.
+ * @head: A pointer to the head of the listint_t to check.
+ *
+ * Return: If the list is not looped - 0.
+ *         Otherwise - the number of unique nodes in the list.
+ */
+size_t looped_listint_len(const listint_t *head)
 {
-	if (n < 16)
+	const listint_t *tortoise, *hare;
+	size_t nodes = 1;
+
+	if (head == NULL || head->next == NULL)
+		return (0);
+
+	tortoise = head->next;
+	hare = (head->next)->next;
+
+	while (hare)
 	{
-		if (n > 9)
-			_putchar(n - 9 - 1 + 'a');
-		else
-			_putchar(n + '0');
+		if (tortoise == hare)
+		{
+			tortoise = head;
+			while (tortoise != hare)
+			{
+				nodes++;
+				tortoise = tortoise->next;
+				hare = hare->next;
+			}
+
+			tortoise = tortoise->next;
+			while (tortoise != hare)
+			{
+				nodes++;
+				tortoise = tortoise->next;
+			}
+
+			return (nodes);
+		}
+
+		tortoise = tortoise->next;
+		hare = (hare->next)->next;
 	}
-	else
-	{
-		base_16(n / 16);
-		if (n % 16 > 9)
-			_putchar((n % 16) - 10 + 'a');
-		else
-			_putchar((n % 16) + '0');
-	}
-}
-/**
-* print_int - print int
-* @n: decimal num
-*/
 
-void print_int(int n)
-{
-	if (n < 10)
-		_putchar(n + '0');
-	else
-	{
-		print_int(n / 10);
-		_putchar(n % 10 + '0');
-	}
-}
-/**
-* print_hex - print num in base 16
-* @n: decimal num
-* @y: num 2 in decimal
-*/
-
-
-void print_hex(unsigned long int n, int y)
-{
-	_putchar('[');
-	_putchar('0');
-	_putchar('x');
-	base_16(n);
-	_putchar(']');
-	_putchar(' ');
-	print_int(y);
-	_putchar('\n');
-}
-/**
-* __exit - print num in base 16 and exit
-* @n: decimal num
-* @y: decimal num 2
-*/
-
-void __exit(unsigned int n, int y)
-{
-	_putchar('-');
-	_putchar('>');
-	_putchar(' ');
-	print_hex(n, y);
+	return (0);
 }
 
 /**
- * print_listint_safe - print linked list safely
- * @head: head pointer
- * Return: Number of Nodes
+ * print_listint_safe - Prints a listint_t list safely.
+ * @head: A pointer to the head of the listint_t list.
+ *
+ * Return: The number of nodes in the list.
  */
 size_t print_listint_safe(const listint_t *head)
 {
-	size_t Nodes = 0;
-	listint_t *first, *second;
+	size_t nodes, index = 0;
 
-	print_hex((unsigned long int)head, head->n);
-	first = head->next;
-	second = head->next;
+	nodes = looped_listint_len(head);
 
-	if (first == head)
+	if (nodes == 0)
 	{
-		print_hex((unsigned long int)first, first->n);
-		return (1);
+		for (; head != NULL; nodes++)
+		{
+			printf("[%p] %d\n", (void *)head, head->n);
+			head = head->next;
+		}
 	}
-	Nodes++;
-	while (first)
+
+	else
 	{
-		if (first == first->next)
+		for (index = 0; index < nodes; index++)
 		{
-			_putchar('-');
-			_putchar('>');
-			print_hex((unsigned long int)first, first->n);
-			return (Nodes);
+			printf("[%p] %d\n", (void *)head, head->n);
+			head = head->next;
 		}
-		while (second != first)
-		{
-			if (second == first->next)
-			{
-				print_hex((unsigned long int)first, first->n);
-				_putchar('-');
-				_putchar('>');
-				print_hex((unsigned long int)second, second->n);
-				return (Nodes);
-			}
-			second = second->next;
-		}
-		print_hex((unsigned long int)first, first->n);
-		second = head->next;
-		first = first->next;
-		Nodes++;
+
+		printf("-> [%p] %d\n", (void *)head, head->n);
 	}
-	return (Nodes - 1);
+
+	return (nodes);
 }
