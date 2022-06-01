@@ -14,20 +14,22 @@ listint_t *find_listint_loop(listint_t *head)
 	second = head;
 	while (first)
 	{
-		if (first == first->next)
+		first = first->next->next;
+		second = second->next;
+		if (first == second)
 		{
-			return (first);
-		}
-		while (second != first)
-		{
-			if (second == first->next)
+			second = head;
+			while (second != first)
 			{
-				return (second);
+				second = second->next;
+				first = first->next;
 			}
-			second = second->next;
+			return (second);
 		}
-		second = head;
-		first->first->next;
 	}
 	return (NULL);
+}
+
+
+
 }
