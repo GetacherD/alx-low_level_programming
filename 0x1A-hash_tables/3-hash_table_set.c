@@ -95,7 +95,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	while (cur && _strcmp(cur->key, key)  != 1)
 		cur = cur->next;
 	if (cur == NULL)
-		add_key_collision(ht, key, value);
+		return (add_key_collision(ht, key, value));
 	free(cur->value);
 	cur->value = (char *)malloc(sizeof(char) * _strlen(value));
 	if (cur->value == NULL)
