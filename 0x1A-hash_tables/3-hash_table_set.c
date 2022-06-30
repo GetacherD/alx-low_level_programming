@@ -1,55 +1,11 @@
 #include "hash_tables.h"
 /**
- * _strcmp - comapre strings
- * @src: first string
- * @dest: second string
- * Return: 1 if equal else -1
+ * add_key - add new key if does not exist
+ * @ht: hash table
+ * @key: key to be added
+ * @value: value to be added
+ * Return: 1 if success else 0
  */
-int _strcmp(char *src, const char *dest)
-{
-	int i = 0;
-
-	while (src[i] && dest[i])
-	{
-		if (src[i] != dest[i])
-			return (-1);
-		i++;
-	}
-	if (src[i] == '\0' && dest[i] == '\0')
-		return (1);
-	return (-1);
-}
-/**
- * _strcpy -copy strings
- * @src: source str
- * @dest: destination str
- */
-void _strcpy(const char *src, char *dest)
-{
-	int i = 0;
-
-	while (src[i])
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	dest[i] = '\0';
-}
-/**
- * _strlen - return length of string including null terminator
- * @s: string to be cheked
- * Return: length(number of chars)
- */
-int _strlen(const char *s)
-{
-	int i = 0;
-
-	if (s == NULL)
-		return (-1);
-	while (s[i])
-		i++;
-	return (i + 1);
-}
 int add_key(hash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int i;
@@ -79,6 +35,41 @@ int add_key(hash_table_t *ht, const char *key, const char *value)
 	return (1);
 }
 /**
+ * add_key_collision - add key if there is a collison
+ * @ht: hash table
+ * @key: key to be added
+ * @value: value to be added
+ * Return: 1 if success else 0
+ */
+int add_key_collision(hash_table_t *ht, const char *key, const char *value)
+{
+	unsigned long int i;
+	hash_node_t *Node;
+
+	i = key_index((const unsigned char *)key, ht->size);
+	Node = (hash_node_t *)malloc(sizeof(hash_node_t));
+	if (Node == NULL)
+		return (0);
+	Node->key = (char *)malloc(sizeof(char) * _strlen(key));
+	if (Node->key == NULL)
+	{
+		free(Node);
+		return (0);
+	}
+	Node->value = (char *)malloc(sizeof(char) * _strlen(value));
+	if (Node->value == NULL)
+	{
+		free(Node->key);
+		free(Node);
+		return (0);
+	}
+	_strcpy(key, Node->key);
+	_strcpy(value, Node->value);
+	Node->next = (ht->array)[i];
+	(ht->array)[i] = Node;
+	return (1);
+}
+/**
  * hash_table_set - add new element to table
  * @ht: hash table
  * @key: key to be added
@@ -104,38 +95,15 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	while (cur && _strcmp(cur->key, key)  != 1)
 		cur = cur->next;
 	if (cur == NULL)
+		add_key_collision(ht, key, value);
+	free(cur->value);
+	cur->value = (char *)malloc(sizeof(char) * _strlen(value));
+	if (cur->value == NULL)
 	{
-		Node->key = (char *)malloc(sizeof(char) * _strlen(key));
-		if (Node->key == NULL)
-		{
-			free(Node);
-			return (0);
-		}
-		Node->value = (char *)malloc(sizeof(char) * _strlen(value));
-		if (Node->value == NULL)
-		{
-			free(Node->key);
-			free(Node);
-			return (0);
-		}
-		_strcpy(key, Node->key);
-		_strcpy(value, Node->value);
-		Node->next = (ht->array)[i];
-		(ht->array)[i] = Node;
+		free(Node->key);
+		free(Node);
+		return (0);
 	}
-	else
-	{
-		free(cur->value);
-		cur->value = (char *)malloc(sizeof(char) * _strlen(value));
-	{
-		if (cur->value == NULL)
-			{
-				free(Node->key);
-				free(Node);
-				return (0);
-			}
-			_strcpy(value, cur->value);
-		}
-	}
+	_strcpy(value, cur->value);
 	return (1);
 }
