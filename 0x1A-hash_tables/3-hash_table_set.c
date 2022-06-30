@@ -62,7 +62,9 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	unsigned long int i = 0;
 	hash_node_t *Node = NULL, *cur = NULL;
 
-	if (key == NULL)
+	if (ht == NULL)
+		return (0);
+	if (key == NULL || value == NULL)
 		return (0);
 	i = key_index((const unsigned char *)key, ht->size);
 	Node = (hash_node_t *)malloc(sizeof(hash_node_t));
