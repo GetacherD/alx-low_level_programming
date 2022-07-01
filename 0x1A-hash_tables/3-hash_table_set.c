@@ -79,16 +79,14 @@ int add_key_collision(hash_table_t *ht, const char *key, const char *value)
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int i = 0;
-	hash_node_t *Node = NULL, *cur = NULL;
+	char *val_copy;
+	hash_node_t *cur = NULL;
 
 	if (ht == NULL)
 		return (0);
-	if (key == NULL || value == NULL)
+	if (key == NULL || *key == '\0' || value == NULL)
 		return (0);
 	i = key_index((const unsigned char *)key, ht->size);
-	Node = (hash_node_t *)malloc(sizeof(hash_node_t));
-	if (Node == NULL)
-		return (0);
 	if ((ht->array)[i] == NULL)
 		return (add_key(ht, key, value));
 	cur = (ht->array)[i];
@@ -96,12 +94,11 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		cur = cur->next;
 	if (cur == NULL)
 		return (add_key_collision(ht, key, value));
-	free(cur->value);
+	val_copy = cur->value;
 	cur->value = (char *)malloc(sizeof(char) * _strlen(value));
 	if (cur->value == NULL)
 	{
-		free(Node->key);
-		free(Node);
+		cur->value = val_copy;
 		return (0);
 	}
 	_strcpy(value, cur->value);
