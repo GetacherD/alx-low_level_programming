@@ -93,7 +93,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		cur = cur->next;
 	if (cur == NULL)
 		return (add_key_collision(ht, key, value));
-	free(cur_value);
+	free(cur->value);
 	cur->value = (char *)malloc(sizeof(char) * _strlen(value));
 	if (cur->value == NULL)
 	{
