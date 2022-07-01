@@ -79,7 +79,6 @@ int add_key_collision(hash_table_t *ht, const char *key, const char *value)
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int i = 0;
-	char *val_copy;
 	hash_node_t *cur = NULL;
 
 	if (ht == NULL)
@@ -94,11 +93,12 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		cur = cur->next;
 	if (cur == NULL)
 		return (add_key_collision(ht, key, value));
-	val_copy = cur->value;
+	free(cur_value);
 	cur->value = (char *)malloc(sizeof(char) * _strlen(value));
 	if (cur->value == NULL)
 	{
-		cur->value = val_copy;
+		free(cur->key);
+		free(cur);
 		return (0);
 	}
 	_strcpy(value, cur->value);
