@@ -27,7 +27,9 @@ int __lt__(const char *first, const char *second)
 	while (first[i] && second[i])
 	{
 		if (second[i] > first[i])
-			return (-1);
+		{
+			return (1);
+		}
 		i++;
 	}
 	if (first[i] == '\0' && second[i] == '\0')
@@ -79,14 +81,16 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 		prev = ht->shead;
 		while (cur)
 		{
-			if (__lt__(Node->key, cur->key) == 1)
+			if (__lt__(cur->key, Node->key) == 1)
 			{
+				printf("EVER HERE %d\n", __lt__(Node->key, cur->key));
 				if (cur == ht->shead)
 				{
 					cur->sprev = Node;
 					Node->snext = cur;
 					Node->sprev = NULL;
 					ht->shead = Node;
+					ht->stail = cur;
 				}
 				else
 				{
@@ -103,6 +107,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 		(ht->stail)->snext = Node;
 		Node->snext = NULL;
 		Node->sprev = ht->stail;
+		ht->stail = Node;
 		return (1);
 	}
 	else
@@ -144,7 +149,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 			prev = ht->shead;
 			while (cur)
 			{
-				if (__lt__(Node->key, cur->key) == 1)
+				if (__lt__(cur->key, Node->key) == 1)
 				{
 					if (cur == ht->shead)
 					{
@@ -152,6 +157,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 						Node->sprev = NULL;
 						cur->sprev = Node;
 						ht->shead = Node;
+						ht->stail = cur;
 					}
 					else
 					{
@@ -168,6 +174,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 			(ht->stail)->snext = Node;
 			Node->snext = NULL;
 			Node->sprev = ht->stail;
+			ht->stail = Node;
 			return (1);
 		}
 		else
@@ -213,7 +220,7 @@ void shash_table_print(const shash_table_t *ht)
 	int start = 1;
 
 	cur = ht->shead;
-	printf("formal\n{");
+	printf("\n{");
 	while(cur)
 	{
 		if (start == 0)
@@ -230,13 +237,14 @@ void shash_table_print_rev(const shash_table_t *ht)
 	int start = 1;
 
 	cur = ht->stail;
-	printf("reverse \n{");
+	printf("{");
 	while (cur)
 	{
 		if (start == 0)
 			printf(", ");
 		printf("'%s': '%s'", cur->key, cur->value);
 		cur = cur->sprev;
+		start = 0;
 	}
 	printf("}\n");
 }
