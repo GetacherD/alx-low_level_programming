@@ -83,14 +83,12 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 		{
 			if (__lt__(cur->key, Node->key) == 1)
 			{
-				printf("EVER HERE %d\n", __lt__(Node->key, cur->key));
 				if (cur == ht->shead)
 				{
 					cur->sprev = Node;
 					Node->snext = cur;
 					Node->sprev = NULL;
 					ht->shead = Node;
-					ht->stail = cur;
 				}
 				else
 				{
@@ -157,7 +155,6 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 						Node->sprev = NULL;
 						cur->sprev = Node;
 						ht->shead = Node;
-						ht->stail = cur;
 					}
 					else
 					{
@@ -219,15 +216,15 @@ void shash_table_print(const shash_table_t *ht)
 	shash_node_t *cur;
 	int start = 1;
 
-	cur = ht->shead;
-	printf("\n{");
+	cur = ht->stail;
+	printf("{");
 	while(cur)
 	{
 		if (start == 0)
 			printf(", ");
 		printf("'%s': '%s'", cur->key, cur->value);
 		start = 0;
-		cur = cur->snext;
+		cur = cur->sprev;
 	}
 	printf("}\n");
 }
@@ -236,18 +233,30 @@ void shash_table_print_rev(const shash_table_t *ht)
 	shash_node_t *cur;
 	int start = 1;
 
-	cur = ht->stail;
+	cur = ht->shead;
 	printf("{");
 	while (cur)
 	{
 		if (start == 0)
 			printf(", ");
 		printf("'%s': '%s'", cur->key, cur->value);
-		cur = cur->sprev;
+		cur = cur->snext;
 		start = 0;
 	}
 	printf("}\n");
 }
 void shash_table_delete(shash_table_t *ht)
 {
+	shash_node_t *cur, *next;
+
+	while (cur)
+	{
+		next = cur->snext;
+		free(cur->key);
+		free(cur->value);
+		free(cur);
+		cur = next;
+	}
+	free(ht->array);
+	free(ht);
 }
