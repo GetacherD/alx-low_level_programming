@@ -216,6 +216,8 @@ void shash_table_print(const shash_table_t *ht)
 	shash_node_t *cur;
 	int start = 1;
 
+	if (ht == NULL)
+		return;
 	cur = ht->stail;
 	printf("{");
 	while(cur)
@@ -233,6 +235,8 @@ void shash_table_print_rev(const shash_table_t *ht)
 	shash_node_t *cur;
 	int start = 1;
 
+	if (ht == NULL)
+		return;
 	cur = ht->shead;
 	printf("{");
 	while (cur)
@@ -248,14 +252,19 @@ void shash_table_print_rev(const shash_table_t *ht)
 void shash_table_delete(shash_table_t *ht)
 {
 	shash_node_t *cur, *next;
+	unsigned long int i;
 
-	while (cur)
+	for (i = 0; i < ht->size; i++)
 	{
-		next = cur->snext;
-		free(cur->key);
-		free(cur->value);
-		free(cur);
-		cur = next;
+		cur = (ht->array)[i];
+		while (cur)
+		{
+			next = cur->next;
+			free(cur->key);
+			free(cur->value);
+			free(cur);
+			cur = next;
+		}
 	}
 	free(ht->array);
 	free(ht);
