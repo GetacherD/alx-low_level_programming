@@ -1,5 +1,9 @@
 #include "hash_tables.h"
-
+/**
+ * shash_table_create -create hash table
+ * @size: size of hash table
+ * Return: hast table
+ */
 shash_table_t *shash_table_create(unsigned long int size)
 {
 	shash_table_t *ht;
@@ -21,23 +25,37 @@ shash_table_t *shash_table_create(unsigned long int size)
 	ht->size = size;
 	return (ht);
 }
-int __lt__(const char *first, const char *second)
+/**
+ * __lt__ - util function compare two strings
+ * @Node: first string
+ * @cur: second string
+ * Return: 1 if first < second -1 otherwise 0 if equal
+ */
+int __lt__(const char *Node, const char *cur)
 {
 	int i = 0;
-	while (first[i] && second[i])
+
+	while (Node[i] && cur[i])
 	{
-		if (second[i] > first[i])
+		if (cur[i] > Node[i])
 		{
 			return (1);
 		}
 		i++;
 	}
-	if (first[i] == '\0' && second[i] == '\0')
+	if (Node[i] == '\0' && cur[i] == '\0')
 		return (0);
-	if (first[i] == '\0' && second[i] != '\0')
+	if (Node[i] == '\0' && cur[i] != '\0')
 		return (1);
 	return (-1);
 }
+/**
+ * shash_table_set - set element to ht
+ * @ht: hash table
+ * @key: new key
+ * @value: new value
+ * Return: 1 if succed else 0
+ */
 int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int i;
@@ -81,7 +99,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 		prev = ht->shead;
 		while (cur)
 		{
-			if (__lt__(cur->key, Node->key) == 1)
+			if (__lt__(Node->key, cur->key) == 1)
 			{
 				if (cur == ht->shead)
 				{
@@ -111,7 +129,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 	else
 	{
 		cur = (ht->array)[i];
-		while(cur && _strcmp(cur->key , key) != 1)
+		while (cur && _strcmp(cur->key, key) != 1)
 			cur = cur->next;
 		if (cur == NULL)
 		{
@@ -147,7 +165,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 			prev = ht->shead;
 			while (cur)
 			{
-				if (__lt__(cur->key, Node->key) == 1)
+				if (__lt__(Node->key, cur->key) == 1)
 				{
 					if (cur == ht->shead)
 					{
@@ -194,6 +212,12 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 	}
 
 }
+/**
+ * shash_table_get - get element
+ * @ht: hash table
+ * @key: key searched
+ * Return: value string
+ */
 char *shash_table_get(const shash_table_t *ht, const char *key)
 {
 	unsigned long int i;
@@ -211,26 +235,11 @@ char *shash_table_get(const shash_table_t *ht, const char *key)
 	}
 	return (NULL);
 }
+/**
+ * shash_table_print - print hash table elements
+ * @ht: hash table
+ */
 void shash_table_print(const shash_table_t *ht)
-{
-	shash_node_t *cur;
-	int start = 1;
-
-	if (ht == NULL)
-		return;
-	cur = ht->stail;
-	printf("{");
-	while(cur)
-	{
-		if (start == 0)
-			printf(", ");
-		printf("'%s': '%s'", cur->key, cur->value);
-		start = 0;
-		cur = cur->sprev;
-	}
-	printf("}\n");
-}
-void shash_table_print_rev(const shash_table_t *ht)
 {
 	shash_node_t *cur;
 	int start = 1;
@@ -244,11 +253,38 @@ void shash_table_print_rev(const shash_table_t *ht)
 		if (start == 0)
 			printf(", ");
 		printf("'%s': '%s'", cur->key, cur->value);
+		start = 0;
 		cur = cur->snext;
+	}
+	printf("}\n");
+}
+/**
+ * shash_table_print_rev - print hash table in reverse
+ * @ht: hash table
+ */
+void shash_table_print_rev(const shash_table_t *ht)
+{
+	shash_node_t *cur;
+	int start = 1;
+
+	if (ht == NULL)
+		return;
+	cur = ht->stail;
+	printf("{");
+	while (cur)
+	{
+		if (start == 0)
+			printf(", ");
+		printf("'%s': '%s'", cur->key, cur->value);
+		cur = cur->sprev;
 		start = 0;
 	}
 	printf("}\n");
 }
+/**
+ * shash_table_delete - free hash table
+ * @ht: hash table
+ */
 void shash_table_delete(shash_table_t *ht)
 {
 	shash_node_t *cur, *next;
