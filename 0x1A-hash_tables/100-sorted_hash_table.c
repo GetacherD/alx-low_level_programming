@@ -145,7 +145,7 @@ int add_new(shash_table_t *ht, const char *key, const char *value)
 int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int i;
-	shash_node_t *cur, *prev, *Node;
+	shash_node_t *cur;
 
 	if (ht == NULL || key == NULL || *key == '\0' || value == NULL)
 		return (0);
