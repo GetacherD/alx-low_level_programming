@@ -109,7 +109,11 @@ int add_new(shash_table_t *ht, const char *key, const char *value)
 {
 	shash_node_t *Node;
 	unsigned long int i;
+	char *val_copy;
 
+	val_copy = strdup(value);
+	if (val_copy == NULL)
+		return (0);
 	i = key_index((const unsigned char *)key, ht->size);
 	Node = (shash_node_t *)malloc(sizeof(shash_node_t));
 	if (Node == NULL)
@@ -120,16 +124,8 @@ int add_new(shash_table_t *ht, const char *key, const char *value)
 		free(Node);
 		return (0);
 	}
-	Node->value = malloc(sizeof(char) * _strlen(value));
-	if (Node->value == NULL)
-	{
-		free(Node->key);
-		free(Node);
-		return (0);
-	}
-
 	_strcpy(key, Node->key);
-	_strcpy(value, Node->value);
+	Node->value = val_copy;
 	Node->next = (ht->array)[i];
 	(ht->array)[i] = Node;
 	return (_add_shash_table(ht, Node));
@@ -146,6 +142,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int i;
 	shash_node_t *cur;
+	char *val_copy;
 
 	if (ht == NULL || key == NULL || *key == '\0' || value == NULL)
 		return (0);
@@ -157,15 +154,10 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 		cur = cur->next;
 	if (cur == NULL)
 		return (add_new(ht, key, value));
-	free(cur->value);
-	cur->value = malloc(sizeof(char) * _strlen(value));
-	if (cur->value == NULL)
-	{
-		free(cur->key);
-		free(cur);
+	val_copy = strdup(value);
+	if (val_copy == NULL)
 		return (0);
-	}
-	_strcpy(value, cur->value);
+	cur->value = val_copy;
 	return (1);
 }
 /**
