@@ -8,13 +8,7 @@ def island_perimeter(grid):
 
     """ Calculate Perimeter of island """
     count = 0
-    for i in range(len(grid[0])):
-        if grid[0][i] or grid[len(grid) - 1][i]:
-            return 0
-    for i in range(len(grid)):
-        if grid[i][0] or grid[len(grid[0]) - 1][i]:
-            return 0
-    if not grid or grid == [[]]:
+    if not grid or grid == [[]] or len(grid) == 1 or len(grid[0]) == 1:
         return 0
     for i in range(1, len(grid)):
         for j in range(1, len(grid[0])):
