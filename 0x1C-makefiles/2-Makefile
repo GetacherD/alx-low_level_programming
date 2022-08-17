@@ -1,0 +1,12 @@
+CC=gcc
+SRC=$(wildcard *.c)
+OBJ=$(patsubst %.c, %.o, $(wildcard *.c))
+NAME=school
+all:$(NAME)
+
+$(NAME):$(OBJ)
+	$(CC) -o $@ $(OBJ)
+
+$(OBJ): %.o: %.c
+	$(CC) -c $^ -o $@
+
