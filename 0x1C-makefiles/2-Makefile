@@ -4,3 +4,5 @@ OBJ=$(patsubst %.c, %.o, $(wildcard *.c))
 NAME=school
 all: $(OBJ)
 	$(CC) -o $(NAME) $(OBJ)
+%.o: %.c
+	$(CC) -c -o $@ $<
