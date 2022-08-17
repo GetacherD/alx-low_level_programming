@@ -2,10 +2,5 @@ CC=gcc
 SRC=$(wildcard *.c)
 OBJ=$(patsubst %.c, %.o, $(wildcard *.c))
 NAME=school
-all: $(NAME)
-
-$(NAME): $(OBJ)
-	$(CC)  $^ -o $@
-
-%.o: %.c
-	$(CC) -c -o $@ $<
+all: $(OBJ)
+	$(CC) -o $(NAME) $(OBJ)
