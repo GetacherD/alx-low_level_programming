@@ -13,8 +13,6 @@ int _advanced_binary(int *array,
 	size_t i = 0;
 	size_t mid;
 
-	if (array == NULL)
-		return (-1);
 	printf("Searching in array: %d", array[low]);
 	for (i = low + 1; i <= high; i++)
 	{
