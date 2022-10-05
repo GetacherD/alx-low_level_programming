@@ -2,13 +2,12 @@
 /**
  * _binary_search - search sorted array for a value
  * @array: array to be searched
- * @size: size of array
  * @value: value to be searched
  * @low: start index
  * @high: end index
  * Return: index of value if found else -1
  */
-int _advanced_binary(int *array, size_t size,
+int _advanced_binary(int *array,
 		int value, size_t low, size_t high)
 {
 	size_t i = 0;
@@ -28,8 +27,8 @@ int _advanced_binary(int *array, size_t size,
 	if (low == high)
 		return (-1);
 	if (array[mid] < value)
-		return (_advanced_binary(array, high - mid, value, mid + 1, high));
-	return (_advanced_binary(array, mid, value, low, mid - 1));
+		return (_advanced_binary(array, value, mid + 1, high));
+	return (_advanced_binary(array, value, low, mid - 1));
 }
 /**
  * advanced_binary - search sorted array for a value
@@ -40,10 +39,7 @@ int _advanced_binary(int *array, size_t size,
  */
 int advanced_binary(int *array, size_t size, int value)
 {
-	size_t i = 0;
-	size_t mid;
-
 	if (array == NULL)
 		return (-1);
-	return (_advanced_binary(array, size, value, 0, size - 1));
+	return (_advanced_binary(array, value, 0, size - 1));
 }
