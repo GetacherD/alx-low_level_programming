@@ -8,21 +8,10 @@
  */
 int min_index(int *array, int value, size_t start)
 {
-	size_t j = start, i;
+	size_t j = start;
 
 	while (array[j] == value)
 		j = j - 1;
-	if (j <= start - 2)
-	{
-		printf("Searching in array: %d", array[0]);
-		for (i = 1; i <= start; i++)
-			printf(", %d", array[i]);
-		printf("\n");
-	}
-	printf("Searching in array: %d", array[j + 1]);
-	for (i = j  + 2; i <= start; i++)
-		printf(", %d", array[i]);
-	printf("\n");
 	return (j + 1);
 }
 /**
