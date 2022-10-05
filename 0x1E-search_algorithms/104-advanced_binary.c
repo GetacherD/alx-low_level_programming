@@ -11,7 +11,7 @@ int _advanced_binary(int *array,
 		int value, size_t low, size_t high)
 {
 	size_t i = 0;
-	size_t mid;
+	size_t mid, lower;
 
 	if (array == NULL)
 		return (-1);
@@ -23,8 +23,13 @@ int _advanced_binary(int *array,
 	printf("\n");
 	mid = low + (high - low) / 2;
 	if (array[mid] == value)
+	{
+		lower = _advanced_binary(array, value, low, mid - 1);
+		if (lower != (size_t)(-1))
+			return (lower);
 		return (mid);
-	if (low == high)
+	}
+	if (low >= high)
 		return (-1);
 	if (array[mid] < value)
 		return (_advanced_binary(array, value, mid + 1, high));
