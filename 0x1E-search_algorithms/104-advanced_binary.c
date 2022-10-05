@@ -20,8 +20,8 @@ int _advanced_binary(int *array,
 	}
 	printf("\n");
 	mid = low + (high - low) / 2;
-	if (low == high && array[low] == value)
-		return (low);
+	if (array[mid] == value && (low == high || array[mid - 1] != value))
+		return (mid);
 	if (low >= high)
 		return (-1);
 	if (array[mid] < value)
