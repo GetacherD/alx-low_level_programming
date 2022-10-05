@@ -1,5 +1,31 @@
 #include "search_algos.h"
 /**
+ * min_index - get minimumn index
+ * @array: array to be searched
+ * @value: value required
+ * @start: random index found first
+ * Return: minimum index or first index found
+ */
+int min_index(int *array, int value, size_t start)
+{
+	size_t j = start, i;
+
+	while (array[j] == value)
+		j = j - 1;
+	if (j <= start - 2)
+	{
+		printf("Searching in array: %d", array[0]);
+		for (i = 1; i <= start; i++)
+			printf(", %d", array[i]);
+		printf("\n");
+	}
+	printf("Searching in array: %d", array[j + 1]);
+	for (i = j  + 2; i <= start; i++)
+		printf(", %d", array[i]);
+	printf("\n");
+	return (j + 1);
+}
+/**
  * _binary_search - search sorted array for a value
  * @array: array to be searched
  * @value: value to be searched
@@ -11,7 +37,7 @@ int _advanced_binary(int *array,
 		int value, size_t low, size_t high)
 {
 	size_t i = 0;
-	size_t mid, lower;
+	size_t mid;
 
 	if (array == NULL)
 		return (-1);
@@ -23,12 +49,7 @@ int _advanced_binary(int *array,
 	printf("\n");
 	mid = low + (high - low) / 2;
 	if (array[mid] == value)
-	{
-		lower = _advanced_binary(array, value, low, mid - 1);
-		if (lower != (size_t)(-1))
-			return (lower);
 		return (mid);
-	}
 	if (low >= high)
 		return (-1);
 	if (array[mid] < value)
@@ -44,7 +65,12 @@ int _advanced_binary(int *array,
  */
 int advanced_binary(int *array, size_t size, int value)
 {
+	int found;
+
 	if (array == NULL)
 		return (-1);
-	return (_advanced_binary(array, value, 0, size - 1));
+	found = _advanced_binary(array, value, 0, size - 1);
+	if (found != -1)
+		return (min_index(array, value, found));
+	return (found);
 }
